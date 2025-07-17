@@ -19,7 +19,7 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'application' %>
     <!--
@@ -34,8 +34,25 @@
 
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-gray-50 min-h-screen">
+    <nav class="fixed top-0 left-0 w-full bg-slate-800 shadow z-50">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+         <%= link_to root_path do %>
+          <img src="https://res.cloudinary.com/djkz8rzky/images/f_auto,q_auto/v1751482679/logo-branco-funco-azul-1_mq3ej0/logo-branco-funco-azul-1_mq3ej0.png?_i=AA" alt="Logo" class="w-72 mr-2">
+        <% end %>
+        </div>
+        <div>
+          <% if user_signed_in? %>
+            <span class="mr-4 text-gray-300">Olá, <%= current_user.email %></span>
+            <%= button_to 'Sair', destroy_user_session_path, method: :delete, form: { class: 'inline' }, class: "text-red-500 hover:text-red-700 font-semibold bg-transparent border-none cursor-pointer px-0" %>
+          <% else %>
+            <%= link_to 'Entrar', new_user_session_path, class: "text-blue-500 hover:text-blue-700 font-semibold" %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-24">
       <%= yield %>
     </main>
   </body>
