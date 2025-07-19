@@ -62,3 +62,5 @@ gem "figaro", "~> 1.3"
 
 gem "devise", "~> 4.9"
 gem "vite_rails"
+
+gem "faker", "~> 3.5"
