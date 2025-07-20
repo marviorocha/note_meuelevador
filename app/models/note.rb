@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
-  belongs_to :subsection
-  belongs_to :section
-  belongs_to :user
-  has_and_belongs_to_many :categories
+  belongs_to :author
+  belongs_to :subcategory
+  has_many :note_tags
+  has_many :tags, through: :note_tags
 end
