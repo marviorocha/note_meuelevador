@@ -1,4 +1,4 @@
-ID,updated_at,categoria,subcategoria,tags,note_content,User,Caracteres,NovaNota
+ID,updated_at,categoria,subcategoria,tags,note_content,Autor,Caracteres,is_new
 3,6/11/2014,Máquina de Tração,Cabos de Tração,"Presilha, fixada errada, cabo","A braçadeira de um dos cabos de aço de tração do elevador está fixado do lado errado.
 Tal irregularidade reduz a força de fixação e pode levar ao escorregamento, comprometendo a segurança do equipamento.
 Necessita regularização.

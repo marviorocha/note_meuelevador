@@ -7,18 +7,26 @@ namespace :import do
     puts "Importando notas de #{file_path}..."
 
     CSV.foreach(file_path, headers: true) do |row|
-      note = Note.new(
-        # Ajuste os campos conforme as colunas do seu CSV e do modelo Note
+
+      author = Author.find_or_create_by!(name: row["Autor"])
+      cat = Category.find_or_create_by!(name: row["categoria"])
+      sub = Subcategory.find_or_create_by!(name: row["subcategoria"], category: cat)
+      tag_names = row["tags"].to_s.split(",").map(&:strip)
+      tags = tag_names.map { |t| Tag.find_or_create_by!(name: t) }
+
+      note = Note.create!(
+        updated_at: Date.strptime(row["updated_at"], "%d/%m/%Y"),
+        subcategory: sub,
+        author: author,
         content: row["note_content"],
-        user: row["User"],
-        updated_at: row["updated_at"],
-        # Adicione outros campos conforme necessário
+        characters: row["Caracteres"].to_i,
+        is_new: row["is_new"].to_s.downcase == "true"
       )
-      if note.save
-        puts "Nota criada: #{note.title}"
-      else
-        puts "Erro ao criar nota: #{note.errors.full_messages.join(', ')}"
-      end
+
+      note.tags << tags
+      puts "Nota criada: #{note.id} - #{note.content.truncate(30)}"
+    rescue => e
+      puts "Erro ao importar linha: #{row.inspect} - #{e.message}"
     end
 
     puts "Importação concluída."

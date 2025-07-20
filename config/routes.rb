@@ -12,5 +12,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "dashboard#index"
+
+  resources :note, only: [ :index, :show ]
+
   get "dashboard", to: "dashboard#index"
 end

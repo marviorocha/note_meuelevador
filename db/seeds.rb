@@ -25,15 +25,17 @@ print "Creating default categories...\n"
 author = Author.create!(name: "Eliseu")
 cat = Category.create!(name: "Máquina de Tração")
 sub = Subcategory.create!(name: "Cabos de Tração", category: cat)
-tags = [ "falta trava de segurança", "substituição dos cabos", "presilha", "norma" ].map { |t| Tag.find_or_create_by!(name: t) }
+tags = [ "falta trava de segurança", "presilha", "norma" ].map { |t| Tag.find_or_create_by!(name: t) }
 
 note = Note.create!(
   updated_at: "2014-06-18",
   subcategory: sub,
   author: author,
-  note_content: "B7- Falta trava de segurança...",
+  content: "A braçadeira de um dos cabos de aço de tração do elevador está fixado do lado errado.
+Tal irregularidade reduz a força de fixação e pode levar ao escorregamento, comprometendo a segurança do equipamento.
+Necessita regularização. NM7192 A-5.3.4 Quarta fase Colocar as braçadeiras para cabos (as porcas devem ficar no lado da ponta do cabo não cortado).",
   characters: 205,
-  new_note: false
+  is_new: false
 )
 
 note.tags << tags
