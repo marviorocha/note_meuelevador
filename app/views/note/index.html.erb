@@ -1,0 +1,24 @@
+<div class="mt-20 ">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% @notes.each do |note| %>
+      <div class="card background-gray-100 p-4 rounded-lg shadow-lg">
+        <div class="card-header">
+          <h5 class="card-title font-bold text-2xl text-neutral-600"><%= note.subcategory.category.name %></h5>
+          <h5 class="card-title font-bold text-normal text-neutral-400"><%= note.subcategory.name %></h5>
+        </div>
+        <div class="card-body">
+          <p class="m-5">
+            <figure>
+              <img class="rounded-2xl" src="https://placehold.co/600x400?text=nenhuma+foto" alt="image">
+            </figure>
+          </p>
+          <p class="card-text p-2 "><%= note.content %></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Criado em: <%= note.created_at.strftime("%d/%M/%Y") %></small>
+        </div>
+      </div>
+    <% end %>
+    Total de notas: <%= @notes.count %>
+  </div>
+</div>
