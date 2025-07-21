@@ -24,7 +24,7 @@ class Note < ApplicationRecord
         attribute :category do
       {
         id: subcategory.category.id,
-        name: subcategory.category.name 
+        name: subcategory.category.name
       }
     end
 
@@ -50,19 +50,20 @@ class Note < ApplicationRecord
     # Decide which attributes (including nested ones) you want to be searchable.
     # Use dot notation for nested attributes (e.g., 'author.name').
     searchableAttributes [
-
       "content",
       "author.name",
       "subcategory.name",
+      "subcategory.category.name",
       "tags.name"
     ]
 
     # 5. Define attributes for faceting (if you want to filter by them)
     # This is great for filtering by author, subcategory, or tags in your UI.
     attributesForFaceting [
-      "author.name", # or 'author.id' if you filter by ID
-      "subcategory.name", # or 'subcategory.id'
-      "tags.name" # or 'tags.id'
+      "author.name",
+      "subcategory.category.name",
+      "subcategory.name",
+      "tags.name"
     ]
 
     # 6. Define ranking rules
