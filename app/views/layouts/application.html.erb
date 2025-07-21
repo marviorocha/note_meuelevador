@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.23.2/dist/algoliasearch-lite.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.66.0/dist/instantsearch.production.min.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
@@ -37,5 +39,38 @@
         </div>
       </section>
     </main>
+    <script type="text/javascript">
+      const searchClient = algoliasearch(
+        'JQL57GNACB', // Use sua Application ID
+        'fd2674099c59fff961e52396a6b26ed5'  // Use sua Search API Key (somente leitura)
+      );
+
+      const search = instantsearch({
+        indexName: 'Note', // Nome do seu índice Algolia (geralmente o nome da classe)
+        searchClient,
+      });
+
+      search.addWidgets([
+        instantsearch.widgets.searchBox({
+          container: '#search-box',
+          placeholder: 'Buscar notas...',
+        }),
+
+        instantsearch.widgets.hits({
+          container: '#hits',
+          templates: {
+            item: `
+              <div>
+                <h2>{{{_highlightResult.name.value}}}</h2>
+                <p>{{{_highlightResult.description.value}}}</p>
+                <p>Preço: R$ {{price}}</p>
+              </div>
+            `,
+          },
+        }),
+      ]);
+
+      search.start();
+    </script>
   </body>
 </html>

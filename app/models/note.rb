@@ -1,5 +1,4 @@
 class Note < ApplicationRecord
-  # app/models/note.rb
 
   belongs_to :author
   belongs_to :subcategory
@@ -41,7 +40,7 @@ class Note < ApplicationRecord
       tags.map do |tag|
         {
           id: tag.id,
-          name: tag.name # Assuming Tag has a 'name' attribute
+          name: tag.name  
         }
       end
     end
@@ -57,8 +56,7 @@ class Note < ApplicationRecord
       "tags.name"
     ]
 
-    # 5. Define attributes for faceting (if you want to filter by them)
-    # This is great for filtering by author, subcategory, or tags in your UI.
+
     attributesForFaceting [
       "author.name",
       "subcategory.category.name",
@@ -66,8 +64,7 @@ class Note < ApplicationRecord
       "tags.name"
     ]
 
-    # 6. Define ranking rules
-    # How you want results to be ordered.
+
     ranking [ "words", "typo", "attribute" ] # Example ranking
     # You could also add: 'asc(author.name)' or 'asc(subcategory.name)' if you want to rank by them.
 

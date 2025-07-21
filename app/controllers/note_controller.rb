@@ -1,6 +1,10 @@
 class NoteController < ApplicationController
     def index
-        @notes = Note.first(30)
-        @categories = Category.all
+        if params[:query].present?
+
+            @notes = Note.search(params[:query])
+        else
+            @notes = Note.all
+        end
     end
 end
