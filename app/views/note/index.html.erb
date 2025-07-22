@@ -1,12 +1,7 @@
 <div class="mt-20 ">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <%#= render "shared/sidebar_menu" %>
-    <%= form_tag note_index_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: 'input input-md', placeholder: "Buscar notas..." %>
-      <%= submit_tag "Buscar" %>
-    <% end %>
-    <div id="search-box"></div>
-<div id="hits"></div>
+  
     <% if @notes.any? %>
       <% @notes.each do |note| %>
         <div class="card  w-96 shadow-lg">
