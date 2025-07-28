@@ -1,7 +1,10 @@
 <div class="mt-20 ">
   <div class="w-full mb-4 mx-auto max-w-xl" data-controller="algolia" id="searchbox"></div>
-  <%#= render "shared/sidebar_menu" %>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div  class="text-gray-600 " data-controller="algolia" id="hits"></div>
+  <div class="flex space-x-4 ">
+    <%= render "shared/sidebar_menu" %>
+    <div  class="text-gray-600 shadow-lg" data-controller="algolia" id="hits"></div>
+  </div>
+  <div class="w-full mb-4 mx-auto max-w-xl ">
+    <div id="pagination"></div>
   </div>
 </div>
