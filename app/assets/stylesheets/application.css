@@ -8,8 +8,6 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-@plugin "daisyui";
-
 
 .ais-SearchBox {
     margin: 1em 0;
@@ -42,14 +40,10 @@
 
 .ais-Hits-item {
     align-items: first baseline;
-
 }
-
-
 
 .hit-name {
     flex: none;
-
 }
 
 .hit-description {
@@ -61,7 +55,6 @@
 .ais-RefinementList-list {
     margin-top: 1em;
     color: #1a1818;
-
 }
 
 .ais-RefinementList-labelText {
@@ -71,5 +64,4 @@
 .ais-HierarchicalMenu-label {
     color: #1a1818;
     font-size: 1.125rem;
-
 }

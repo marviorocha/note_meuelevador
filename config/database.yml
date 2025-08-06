@@ -28,6 +28,28 @@ production:
     database: database_note_production
     username: <%= ENV.fetch("DB_NAME") { "myapp" } %>
     password: <%= ENV.fetch("DB_PASS") { ENV["MYAPP_DATABASE_PASSWORD"] } %>
-    # Em produção, é comum usar uma variável de ambiente diferente para a senha
+    # Em produção, é comum usar uma variável de ambiente d iferente para a senha
     # e, opcionalmente, uma URL completa do banco de dados.
     # url: <%= ENV['DATABASE_URL'] %>
+cable:
+    adapter: postgresql
+    encoding: unicode
+    pool: 5
+    database: database_cable_production
+    username: <%= ENV.fetch("DB_NAME") { "myapp" } %>
+    password: <%= ENV.fetch("DB_PASS") { ENV["MYAPP_DATABASE_PASSWORD"] } %>
+
+queue:
+    adapter: postgresql
+    encoding: unicode
+    pool: 5
+    database: database_queue_production
+    username: <%= ENV.fetch("DB_NAME") { "myapp" } %>
+    password: <%= ENV.fetch("DB_PASS") { ENV["MYAPP_DATABASE_PASSWORD"] } %>
+
+cache:
+    adapter: postgresql
+    database: database_cache_production
+    pool: 5
+    username: <%= ENV.fetch("DB_NAME") { "myapp" } %>
+    password: <%= ENV.fetch("DB_PASS") { ENV["MYAPP_DATABASE_PASSWORD"] } %>

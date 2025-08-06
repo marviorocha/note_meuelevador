@@ -1,13 +1,15 @@
-import { defineConfig } from 'vite'
-import RubyPlugin from 'vite-plugin-ruby'
-import StimulusHMR from 'vite-plugin-stimulus-hmr'
+import { defineConfig } from "vite";
+import RubyPlugin from "vite-plugin-ruby";
+import StimulusHMR from "vite-plugin-stimulus-hmr";
+
 export default defineConfig({
-    plugins: [
-        RubyPlugin(),
-        StimulusHMR()
-    ],
+    plugins: [RubyPlugin(), StimulusHMR()],
     server: {
         hmr: true,
-        overlay: true
-    }
-})
+        overlay: true,
+    },
+    build: {
+        manifest: true,
+        outDir: "public/vite",
+    },
+});
