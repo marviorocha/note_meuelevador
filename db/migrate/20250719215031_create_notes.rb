@@ -3,10 +3,10 @@ class CreateNotes < ActiveRecord::Migration[8.0]
     create_table :notes do |t|
       t.references :author, null: false, foreign_key: true
       t.references :subcategory, null: false, foreign_key: true
+      t.integer :status, default: 0
       t.text :content, null: false
       t.integer :characters
       t.boolean :is_new, default: false
-
       t.timestamps
     end
   end

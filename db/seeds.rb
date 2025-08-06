@@ -24,12 +24,14 @@ print "Creating default categories...\n"
 
 author = Author.create!(name: "Eliseu")
 cat = Category.create!(name: "Máquina de Tração")
+status = Note.status
 sub = Subcategory.create!(name: "Cabos de Tração", category: cat)
 tags = [ "falta trava de segurança", "presilha", "norma" ].map { |t| Tag.find_or_create_by!(name: t) }
 
 note = Note.create!(
   updated_at: "2014-06-18",
   subcategory: sub,
+  status: status,
   author: author,
   content: "A braçadeira de um dos cabos de aço de tração do elevador está fixado do lado errado.
 Tal irregularidade reduz a força de fixação e pode levar ao escorregamento, comprometendo a segurança do equipamento.

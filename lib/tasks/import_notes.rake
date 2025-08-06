@@ -7,17 +7,32 @@ namespace :import do
     puts "Importando notas de #{file_path}..."
 
     CSV.foreach(file_path, headers: true) do |row|
-
-      author = Author.find_or_create_by!(name: row["Autor"])
+      author = Author.find_or_create_by!(name: row["Author"])
       cat = Category.find_or_create_by!(name: row["categoria"])
+
+      status_text = row["status"]
+
+      status = case status_text
+
+      when "Revisar"
+        :revisar
+      when "Ok"
+        :ok
+      when "Arquivado"
+        :arquivado
+      else
+        :revisar
+      end
+
       sub = Subcategory.find_or_create_by!(name: row["subcategoria"], category: cat)
       tag_names = row["tags"].to_s.split(",").map(&:strip)
       tags = tag_names.map { |t| Tag.find_or_create_by!(name: t) }
 
       note = Note.create!(
-        updated_at: Date.strptime(row["updated_at"], "%d/%m/%Y"),
+
         subcategory: sub,
         author: author,
+        status: status,
         content: row["note_content"],
         characters: row["Caracteres"].to_i,
         is_new: row["is_new"].to_s.downcase == "true"

@@ -4,11 +4,13 @@ class Note < ApplicationRecord
   has_many :note_tags
   has_many :tags, through: :note_tags
 
+ enum :status, { revisar: 0, ok: 1, arquivado: 2 }
+
   include AlgoliaSearch
 
   algoliasearch do
     # 1. Attributes from the Note model itself
-    attributes :subcategory, :content, :hierarchicalCategories # Add any other attributes you want to index from Note
+    attributes :subcategory, :content, :hierarchicalCategories, :status # Add any other attributes you want to index from Note
 
     attribute :hierarchicalCategories do
         {
@@ -40,6 +42,7 @@ class Note < ApplicationRecord
     end
 
 
+
     attribute :tags do
       tags.map do |tag|
         {
@@ -52,6 +55,7 @@ class Note < ApplicationRecord
 
     searchableAttributes [
       "content",
+      "status",
       "author.name",
       "subcategory.name",
       "subcategory.category.name",
@@ -63,6 +67,7 @@ class Note < ApplicationRecord
       "subcategory.category.name",
       "subcategory.name",
       "tags.name",
+      "status",
       "hierarchicalCategories.lvl0",
       "hierarchicalCategories.lvl1"
     ]

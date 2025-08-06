@@ -39,6 +39,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_19_215822) do
   create_table "notes", force: :cascade do |t|
     t.bigint "author_id", null: false
     t.bigint "subcategory_id", null: false
+    t.integer "status", default: 0
     t.text "content", null: false
     t.integer "characters"
     t.boolean "is_new", default: false

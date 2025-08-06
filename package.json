@@ -7,6 +7,9 @@
     "vite-plugin-ruby": "^5.1.1"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.19.2",
+    "@algolia/autocomplete-plugin-query-suggestions": "^1.19.2",
+    "@algolia/autocomplete-theme-classic": "^1.19.2",
     "@hotwired/stimulus": "^3.2.2",
     "@tailwindcss/typography": "^0.5.16",
     "algoliasearch": "^5.34.1",

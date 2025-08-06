@@ -50,15 +50,13 @@ export default class extends Controller {
                 ],
                 templates: {
                     item: `
-                     <ul class="menu">
-               
+                     <ul class="menu">            
                      <a  class="{{cssClasses.link}}" href="{{url}}">
                         <span class="{{cssClasses.label}}">{{label}}</span>
                         <span class="{{cssClasses.count}}">
                         {{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}
                         </span>
                     </a>
-                   
                     </ul>
                     `,
                 },
@@ -89,6 +87,7 @@ export default class extends Controller {
                             {{subcategory.name}}
                         </h2>
                     </h2>
+                    
                     <div class="card-actions justify-start pt-2">
                         Tags:
                         {{#tags}}
@@ -99,7 +98,7 @@ export default class extends Controller {
                     <p class="prose md:prose-lg h text-neutral my-2">{{{_highlightResult.content.value}}}</p>
 
                     <div class="card-footer">
-                        <small class="text-muted">Criado em: {{created_at}}</small>
+                        <small class="text-muted">Status: {{status}}</small>
                    
 
                      <div class="card-actions justify-between  pt-2">

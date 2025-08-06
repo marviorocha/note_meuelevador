@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
-        <div class="w-1/4">
+        <%# <div class="w-1/4">
             <label class="input input-md w-92">
             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
@@ -22,7 +22,7 @@
           </svg>
           <input type="search" required placeholder="Search" />
         </label>
-      </div>
+      </div> %>
       <div class="flex-2">
         <ul class="menu menu-horizontal px-1 font-medium text-base transition duration-300">
           <li><%= link_to dashboard_path, class: 'flex items-center' do %>
