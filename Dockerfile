@@ -16,14 +16,23 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
+    apt-get install --no-install-recommends -y curl libpq-dev -y libjemalloc2 libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
 ENV RAILS_ENV="production" \
+    RAILS_MASTER_KEY=${RAILS_MASTER_KEY} \
+    SECRET_KEY_BASE=${SECRET_KEY_BASE} \
+    DB_NAME=${DB_NAME} \
+    DB_USER=${DB_USER} \
+    DB_PASS=${DB_PASS} \
+    DB_HOST=${DB_HOST} \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
+    ARG RAILS_ENV=production
+ 
+
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
@@ -46,9 +55,7 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
-
+# RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
 # Final stage for app image
