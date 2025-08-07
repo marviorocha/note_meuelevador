@@ -11,5 +11,11 @@ export default defineConfig({
     build: {
         manifest: true,
         outDir: "public/vite",
+        rollupOptions: {
+            output: {
+                manualChunks: undefined,
+            },
+        },
     },
+    base: "/vite/",
 });

@@ -38,5 +38,8 @@ module NoteMeuelevador
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Configure Vite assets
+    config.assets.paths << Rails.root.join("public/vite")
   end
 end

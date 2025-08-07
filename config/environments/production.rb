@@ -3,7 +3,15 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   config.hosts << "ruby-on-rails.server.meuelevador.com"
 
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  config.public_file_server.enabled = true
+
+  # Configure Vite assets
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = {
+    "cache-control" => "public, max-age=#{1.year.to_i}",
+    "Access-Control-Allow-Origin" => "*"
+  }
 
   config.assets.compile = false
 
@@ -16,8 +24,6 @@ Rails.application.configure do
   config.consider_all_requests_local = false
 
   config.action_controller.perform_caching = true
-
-  config.public_file_server.headers = { "cache-control" => "public, max-age=#{1.year.to_i}" }
 
   config.active_storage.service = :local
 
