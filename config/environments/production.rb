@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "ruby-on-rails.server.meuelevador.com"
+  config.hosts << "notas.meuelevador.com"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.public_file_server.enabled = true
@@ -32,7 +32,7 @@ Rails.application.configure do
   config.force_ssl = true
 
   config.log_tags = [ :request_id ]
-  
+
   config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
 
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
