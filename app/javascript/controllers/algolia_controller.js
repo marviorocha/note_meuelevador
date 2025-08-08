@@ -25,7 +25,6 @@ export default class extends Controller {
 
         });
 
-
         search.addWidgets([
             searchBox({
                 container: '#searchbox',
@@ -48,16 +47,22 @@ export default class extends Controller {
                     'hierarchicalCategories.lvl0',
                     'hierarchicalCategories.lvl1'
                 ],
+                cssClasses: {
+                    list: 'menu w-full rounded-box',
+                    childList: 'ml-4', // Indenta as subcategorias
+                    item: 'rounded-lg',
+                    link: 'w-full', // Faz o link ocupar toda a largura
+                    selectedItem: '', // Usaremos a classe 'active' no link
+                    count: 'badge badge-ghost',
+                },
                 templates: {
                     item: `
-                     <ul class="menu">            
-                     <a  class="{{cssClasses.link}}" href="{{url}}">
-                        <span class="{{cssClasses.label}}">{{label}}</span>
-                        <span class="{{cssClasses.count}}">
-                        {{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}
-                        </span>
-                    </a>
-                    </ul>
+                        <a class="flex justify-between {{cssClasses.link}} {{#isRefined}}active{{/isRefined}}" href="{{url}}">
+                            <span class="{{cssClasses.label}}">{{label}}</span>
+                            <span class="{{cssClasses.count}}">
+                                {{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}
+                            </span>
+                        </a>
                     `,
                 },
                 // sortBy: ['isRefined'],
@@ -80,7 +85,8 @@ export default class extends Controller {
                 templates: {
                     item: `
                
-                <div class="text-base-200">
+                
+                <div class="card bg-base text-base-200">
                     <h2 class="card-title font-bold text-2xl mt-0 text-neutral-800">
                         {{category.name}}
                         <h2 class="text-xl  text-neutral-500">
@@ -91,7 +97,7 @@ export default class extends Controller {
                     <div class="card-actions justify-start pt-2">
                         Tags:
                         {{#tags}}
-                        <div class="badge badge-outline cursor-pointer hover:bg-slate-800 hover:text-white transition duration-300">{{name}}</div>
+                       <a href="#" onclick="document.querySelector('#searchbox input').value = '{{name}}'; document.querySelector('#searchbox input').dispatchEvent(new Event('input')); return false;" class="badge badge-outline cursor-pointer hover:bg-slate-800 hover:text-white transition duration-300">{{name}}</a>
                         {{/tags}}
                     </div>
             

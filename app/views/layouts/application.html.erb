@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/satellite-min.css" integrity="sha256-woeV7a4SRDsjDc395qjBJ4+ZhDdFn8AqswN1rlTO64E=" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
     <%= yield :head %>
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
@@ -19,14 +21,8 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%#= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    
-    <% if Rails.env.development? %>
-      <%= vite_client_tag %>
-    <% end %>
-    
     <%= vite_stylesheet_tag 'tailwind',  "data-turbo-track": "reload" %>
     <%= Rails.env %>
-    
     <!--
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
@@ -39,46 +35,13 @@
   </head>
   <body class="bg-gray-50 min-h-screen">
     <%= render "shared/dashboard_menu" %>
-    <main class="pt-4">
+    <main>
       <%#= render "shared/flash" %>
       <section>
-        <div class="container mx-auto px-4 py-8">
+        <div class="mx-auto px-4">
           <%= yield %>
         </div>
       </section>
     </main>
-    <script type="text/javascript">
-      const searchClient = algoliasearch(
-        'JQL57GNACB', // Use sua Application ID
-        'fd2674099c59fff961e52396a6b26ed5'  // Use sua Search API Key (somente leitura)
-      );
-
-      const search = instantsearch({
-        indexName: 'Note', // Nome do seu índice Algolia (geralmente o nome da classe)
-        searchClient,
-      });
-
-      search.addWidgets([
-        instantsearch.widgets.searchBox({
-          container: '#search-box',
-          placeholder: 'Buscar notas...',
-        }),
-
-        instantsearch.widgets.hits({
-          container: '#hits',
-          templates: {
-            item: `
-              <div>
-                <h2>{{{_highlightResult.name.value}}}</h2>
-                <p>{{{_highlightResult.description.value}}}</p>
-                <p>Preço: R$ {{price}}</p>
-              </div>
-            `,
-          },
-        }),
-      ]);
-
-      search.start();
-    </script>
   </body>
 </html>

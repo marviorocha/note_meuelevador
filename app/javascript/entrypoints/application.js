@@ -31,3 +31,4 @@ console.log(
 // import '~/index.css'
 
 import "../controllers";
+import "../../assets/stylesheets/application.css"

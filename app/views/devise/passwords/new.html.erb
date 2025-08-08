@@ -4,7 +4,7 @@
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <div class="mb-4">
         <%= f.label :email, class: "block text-base-content font-semibold mb-2" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-xl w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered input-xl w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
       </div>
       <%= f.submit "Enviar instruções", class: "btn btn-primary w-full font-bold py-2 px-4 rounded-lg transition" %>
     <% end %>
