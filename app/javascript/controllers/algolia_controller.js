@@ -29,12 +29,34 @@ export default class extends Controller {
             searchBox({
                 container: '#searchbox',
                 placeholder: 'Pesquisar notas',
-                configure: {
-                    maxValuesPerFacet: 1000,
+                autofocus: true,
+                // A configuração de `maxValuesPerFacet` geralmente é feita
+                // no widget `configure` para ser aplicada globalmente.
+                // Manter aqui funciona, mas pode ser menos explícito.
+                // configure: {
+                //     maxValuesPerFacet: 1000,
+                // },
+                cssClasses: {
+                    root: 'w-full',
+                    form: 'relative',
+                    input: 'ais-SearchBox-input input input-md text-white input-bordered w-full ml-2 pl-10', // Padding para os ícones
+                    submit: 'btn btn-ghost btn-circle absolute top-1/2 left-2 -translate-y-1/2',
+                    reset: 'btn btn-ghost btn-circle absolute top-1/2 right-0 -translate-y-1/2',
+                    loadingIndicator: 'absolute top-1/2 right-6 -translate-y-1/2',
                 },
-
-                autofocus: true
-
+                templates: {
+                    submit: `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    `,
+                    reset: `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    `,
+                    loadingIndicator: `<span class="loading loading-spinner loading-sm"></span>`,
+                },
             }),
             refinementList({
                 container: '#refinement-list',
@@ -70,6 +92,22 @@ export default class extends Controller {
 
             pagination({
                 container: '#pagination',
+                cssClasses: {
+                    root: 'join flex justify-center my-4',
+                    list: '',
+                    item: '',
+                    link: 'join-item btn ',
+                    selectedItem: 'join-item btn-neutral',
+                    disabledItem: 'btn-disabled opacity-50',
+                    firstPageItem: 'first:rounded-l',
+                    lastPageItem: 'last:rounded-r',
+                },
+                templates: {
+                    previous: '« Voltar',
+                    next: '» Próxima',
+                    first: '🏠',
+                    last: '<',
+                },
             }),
 
             hits({
@@ -84,20 +122,14 @@ export default class extends Controller {
                 },
                 templates: {
                     item: `
-               
-                
-                <div class="card bg-base text-base-200">
-                    <h2 class="card-title font-bold text-2xl mt-0 text-neutral-800">
-                        {{category.name}}
-                        <h2 class="text-xl  text-neutral-500">
-                            {{subcategory.name}}
-                        </h2>
-                    </h2>
+ 
+                <div class="card border p-4 bg-base text-base-200">
+                  
                     
                     <div class="card-actions justify-start pt-2">
                         Tags:
                         {{#tags}}
-                       <a href="#" onclick="document.querySelector('#searchbox input').value = '{{name}}'; document.querySelector('#searchbox input').dispatchEvent(new Event('input')); return false;" class="badge badge-outline cursor-pointer hover:bg-slate-800 hover:text-white transition duration-300">{{name}}</a>
+                       <a href="#" onclick="document.querySelector('#searchbox input').value = '{{name}}'; document.querySelector('#searchbox input').dispatchEvent(new Event('input')); return false;" class="badge badge-outline cursor-pointer hover:bg-slate-800 hover:text-white truncate transition duration-300">{{name}}</a>
                         {{/tags}}
                     </div>
             
