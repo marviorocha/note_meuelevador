@@ -70,8 +70,8 @@ export default class extends Controller {
                     'hierarchicalCategories.lvl1'
                 ],
                 cssClasses: {
-                    list: 'menu w-full rounded-box',
-                    childList: 'ml-4', // Indenta as subcategorias
+                    list: 'w-full rounded-box',
+                    childList: 'ml-0', // Indenta as subcategorias
                     item: 'rounded-lg',
                     link: 'w-full', // Faz o link ocupar toda a largura
                     selectedItem: '', // Usaremos a classe 'active' no link
@@ -79,8 +79,8 @@ export default class extends Controller {
                 },
                 templates: {
                     item: `
-                        <a class="flex justify-between {{cssClasses.link}} {{#isRefined}}active{{/isRefined}}" href="{{url}}">
-                            <span class="{{cssClasses.label}}">{{label}}</span>
+                        <a class="flex justify-between {{cssClasses.link}} {{#isRefined}} menu-active text-white bg-slate-500{{/isRefined}}" href="{{url}}">
+                            <span class="{{cssClasses.label}} ">{{label}}</span>
                             <span class="{{cssClasses.count}}">
                                 {{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}
                             </span>
