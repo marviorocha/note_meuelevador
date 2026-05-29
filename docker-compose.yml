@@ -4,13 +4,14 @@ version: "3.8" # Specify the Docker Compose file format version
 services:
   # Service for the PostgreSQL database
   db:
-    image: postgres:13-alpine # Use a lightweight PostgreSQL image
+    build:
+      context: .
+      dockerfile: db.Dockerfile
     volumes:
       - postgres_data:/var/lib/postgresql/data # Mount a named volume for persistent data
     environment:
       POSTGRES_USER: rails_user # Database user
       POSTGRES_PASSWORD: password # Database password (change in production!)
-      POSTGRES_DB: myapp_development # Development database name
     ports:
       - "5432:5432" # Expose PostgreSQL port to the host (optional, but useful for direct access)
     healthcheck: # Health check to ensure the database is ready before the app starts

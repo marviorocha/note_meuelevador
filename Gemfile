@@ -25,7 +25,6 @@ gem "thruster", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
   gem "ruby-lsp", "~> 0.26.1"
   gem "brakeman", require: false
   gem "pry", "~> 0.15.2"
@@ -45,3 +44,5 @@ gem "vite_rails"
 gem "faker", "~> 3.5"
 
 gem "algoliasearch-rails"
+gem "rack-cors"
+gem "csv"

@@ -13,7 +13,6 @@ namespace :import do
       status_text = row["status"]
 
       status = case status_text
-
       when "Revisar"
         :revisar
       when "Ok"
