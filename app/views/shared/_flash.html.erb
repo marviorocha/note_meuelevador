@@ -1,0 +1,6 @@
+<% flash.each do |type, message| %>
+  <div data-controller="flash"
+       data-flash-message-value="<%= message %>"
+       data-flash-type-value="<%= type %>">
+  </div>
+<% end %>
