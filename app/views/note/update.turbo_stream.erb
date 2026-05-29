@@ -1,0 +1,8 @@
+<%= turbo_stream.replace :modal do %>
+  <%= turbo_frame_tag :modal %>
+<% end %>
+
+<script>
+  // Recarrega para refletir as mudanças do Algolia
+  window.location.reload();
+</script>

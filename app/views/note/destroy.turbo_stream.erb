@@ -1,0 +1,5 @@
+<%# Como o hit é renderizado pelo Algolia (JS), não conseguimos remover facilmente via Turbo Stream sem saber o ID no DOM %>
+<%# Uma abordagem simples é recarregar a página ou disparar um evento para o Algolia refazer a busca %>
+<script>
+  window.location.reload();
+</script>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "dashboard#index"
 
-  resources :note, only: [ :index, :show ]
+  resources :note
 
   namespace :api do
     namespace :v1 do

@@ -1,0 +1,22 @@
+
+<div class="mx-auto px-4 mt-10 content w-full max-w-7xl">
+    <h1 bg-base text-base-200>Você tem certeza que deseja deletar essa nota?</h1>
+<div class="card border mt-20 p-4 bg-base text-base-200">
+  <div class="card-actions justify-start pt-2">
+    Tags:
+    <% @note.tags.each do |tag| %>
+      <span class="badge badge-outline"><%= tag.name %></span>
+    <% end %>
+  </div>
+
+  <p class="prose md:prose-lg text-neutral my-2"><%= @note.content %></p>
+
+  <div class="card-footer">
+    <small class="text-muted">Status: <%= @note.status %></small>
+    <div class="card-actions justify-between pt-2">
+      <%= link_to "Editar", edit_note_path(@note), data: { turbo_frame: "modal" }, class: "btn btn-primary btn-outline" %>
+      <%= button_to "Deletar", note_path(@note), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "btn btn-error btn-outline" %>
+    </div>
+  </div>
+</div>
+</div>

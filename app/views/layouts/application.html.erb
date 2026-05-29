@@ -37,10 +37,11 @@
     <main>
       <%#= render "shared/flash" %>
       <section>
-        <div class="mx-auto px-4">
+        <div class="mx-auto px-4 content w-full max-w-7xl">
           <%= yield %>
         </div>
       </section>
+      <%= turbo_frame_tag :modal %>
     </main>
   </body>
 </html>
