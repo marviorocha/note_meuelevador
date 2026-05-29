@@ -6,6 +6,10 @@ class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 
+  # Disable Algolia indexing during tests
+  Note.without_auto_index do
+  end
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   # fixtures :all
 
