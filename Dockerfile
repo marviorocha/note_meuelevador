@@ -35,7 +35,7 @@ COPY . .
 RUN npm install
 
 RUN bundle exec bootsnap precompile app/ lib/
-RUN bundle exec bin/rake import:notes
+
 RUN rm -rf public/vite && RAILS_ENV=production ./bin/vite build
 
 
