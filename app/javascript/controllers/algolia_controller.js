@@ -8,13 +8,19 @@ import {
     refinementList, dynamicWidgets, menu, hierarchicalMenu
 } from 'instantsearch.js/es/widgets';
 
-const searchClient = algoliasearch('JQL57GNACB', 'c20f9d9d5f725912474de47836c3c69e');
-
 // Connects to data-controller="algolia"
 export default class extends Controller {
+    static values = {
+        appId: String,
+        apiKey: String,
+        indexName: String
+    }
+
     connect() {
+        const searchClient = algoliasearch(this.appIdValue, this.apiKeyValue);
+
         const search = instantsearch({
-            indexName: 'Note',
+            indexName: this.indexNameValue,
 
             searchClient,
             future: {

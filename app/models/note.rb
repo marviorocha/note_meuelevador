@@ -8,7 +8,7 @@ class Note < ApplicationRecord
 
   include AlgoliaSearch
 
-  algoliasearch disable_indexing: Rails.env.test? do
+  algoliasearch disable_indexing: Rails.env.test? || ENV["ALGOLIA_ADMIN_API_KEY"].blank? do
     # 1. Attributes from the Note model itself
     attributes :subcategory, :content, :hierarchicalCategories, :status # Add any other attributes you want to index from Note
 

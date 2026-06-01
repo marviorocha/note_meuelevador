@@ -1,4 +1,8 @@
-<div class="my-32" data-controller="algolia">
+<div class="my-32" 
+     data-controller="algolia"
+     data-algolia-app-id-value="<%= ENV['ALGOLIA_APPLICATION_ID'] %>"
+     data-algolia-api-key-value="<%= ENV['ALGOLIA_API_KEY'] %>"
+     data-algolia-index-name-value="<%= Note.index_name %>">
   <div class=" mx-auto">
     <div class="w-full mb-4 mx-auto max-w-xl" id="searchbox"></div>
     <div class="flex space-x-4">
