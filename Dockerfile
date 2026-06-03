@@ -35,7 +35,7 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 RUN rm -rf public/vite && \
-    SECRET_KEY_BASE=dummy_key_for_build RAILS_ENV=production ./bin/vite build
+    SECRET_KEY_BASE=dummy_key_for_build RAILS_ENV=production bundle exec vite build
 COPY . .
 
 RUN npm install
