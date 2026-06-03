@@ -9,39 +9,44 @@ class Note < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch disable_indexing: Rails.env.test? || ENV["ALGOLIA_ADMIN_API_KEY"].blank? do
-    # 1. Attributes from the Note model itself
-    attributes :subcategory, :content, :hierarchicalCategories, :status # Add any other attributes you want to index from Note
+    # Attributes to be indexed
+    attributes :content, :status
 
     attribute :hierarchicalCategories do
+      if subcategory&.category
         {
-            lvl0: subcategory.category.name,
-            lvl1: "#{subcategory.category.name} > #{subcategory.name}"
+          lvl0: subcategory.category.name,
+          lvl1: "#{subcategory.category.name} > #{subcategory.name}"
         }
-        end
+      end
+    end
 
     attribute :author do
-      {
-        id: author.id,
-        name: author.name # Assuming Author has a 'name' attribute
-
-      }
+      if author
+        {
+          id: author.id,
+          name: author.name
+        }
+      end
     end
 
     attribute :category do
-      {
-        id: subcategory.category.id,
-        name: subcategory.category.name
-      }
+      if subcategory&.category
+        {
+          id: subcategory.category.id,
+          name: subcategory.category.name
+        }
+      end
     end
 
     attribute :subcategory do
-      {
-        id: subcategory.id,
-        name: subcategory.name # Assuming Subcategory has a 'name' attribute
-      }
+      if subcategory
+        {
+          id: subcategory.id,
+          name: subcategory.name
+        }
+      end
     end
-
-
 
     attribute :tags do
       tags.map do |tag|
@@ -51,7 +56,6 @@ class Note < ApplicationRecord
         }
       end
     end
-
 
     searchableAttributes [
       "content",
@@ -72,6 +76,6 @@ class Note < ApplicationRecord
       "hierarchicalCategories.lvl1"
     ]
 
-    ranking [ "words", "typo", "attribute" ] # Example ranking
+    ranking [ "words", "typo", "attribute" ]
   end
 end

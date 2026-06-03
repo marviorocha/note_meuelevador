@@ -139,51 +139,45 @@ export default class extends Controller {
                 },
                 cssClasses: {
                     root: 'w-full',
-                    list: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6',
-                    item: 'flex', // Faz os cards terem a mesma altura na linha
+                    list: 'columns-1 md:columns-2 lg:columns-3 gap-4',
+                    item: 'break-inside-avoid mb-4 block',
                 },
                 templates: {
-                    item: `
-                <div class="card bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 w-full flex flex-col">
-                    <div class="card-body p-5 flex flex-col h-full">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tags:</span>
+                    item: `<div class="group card bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 w-full overflow-hidden">
+                    <div class="card-body p-4">
+                        {{#tags.length}}
+                        <div class="flex flex-wrap gap-1 mb-2">
                             {{#tags}}
-                                <a href="#" onclick="document.querySelector('#searchbox input').value = '{{name}}'; document.querySelector('#searchbox input').dispatchEvent(new Event('input')); return false;"
-                                   class="badge badge-sm badge-outline hover:bg-slate-800 hover:text-white transition duration-300">
+                                <span class="badge badge-ghost badge-xs text-[10px] uppercase px-1.5 py-2">
                                    {{name}}
-                                </a>
+                                </span>
                             {{/tags}}
                         </div>
+                        {{/tags.length}}
 
-                        <div class="prose prose-sm text-gray-800 flex-grow mb-4 line-clamp-4">
+                        <div class="prose prose-base max-w-none text-gray-800 leading-tight">
                             {{{_highlightResult.content.value}}}
                         </div>
 
-                        <div class="mt-auto border-t pt-4">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="badge badge-outline badge-sm uppercase">
-                                    {{status}}
-                                </span>
-                            </div>
-
-                            <div class="flex gap-2">
-                                <a href="/notes/{{objectID}}/edit" data-turbo-frame="modal" class="btn btn-primary btn-outline btn-sm flex-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                        <div class="mt-4 pt-2 border-t border-gray-50 flex items-center justify-between   group-hover:opacity-80 transition-opacity duration-200">
+                             <span class="badge badge-ghost badge-xs opacity-50">{{status}}</span>
+                             <div class="flex gap-1">
+                                <a href="/notes/{{objectID}}/edit" data-turbo-frame="modal" class="btn btn-ghost btn-xs text-primary px-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-3.5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                                    </svg>
-                                    Editar
+                                    </svg> Editar
                                 </a>
                                 <a href="/notes/{{objectID}}"
-                                   data-turbo-method="delete"
-                                   data-turbo-confirm="Deseja realmente deletar essa nota?"
-                                   class="btn btn-error btn-outline btn-sm flex-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3.75H6.912a2.25 2.25 0 0 0-2.15 1.588L2.35 13.177a2.25 2.25 0 0 0-.1.661V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 0 0-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 0 1 2.012 1.244l.256.512a2.25 2.25 0 0 0 2.013 1.244h3.218a2.25 2.25 0 0 0 2.013-1.244l.256-.512a2.25 2.25 0 0 1 2.013-1.244h3.859M12 3v8.25m0 0-3-3m3 3 3-3" />
-                                    </svg>
-                                    Arquivar
+
+
+                                   class="btn btn-ghost btn-xs text-info px-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg> Visualizar
+
                                 </a>
-                            </div>
+                             </div>
                         </div>
                     </div>
                 </div>
