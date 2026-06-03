@@ -33,11 +33,12 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
-# 4. COPIA TODO O CÓDIGO FONTE (Essencial estar aqui para o Vite encontrar o config/vite.json e o ambiente Rails)
-COPY . .
+# 4. Instala os pacotes do Node.js separadamente para aproveitar o cache
+COPY package.json package-lock.json* ./
+RUN npm install && npm cache clean --force
 
-# 5. Instala os pacotes do Node.js (agora com o package.json copiado)
-RUN npm install
+# 5. COPIA TODO O CÓDIGO FONTE
+COPY . .
 
 # 6. Precompila o bootsnap do projeto
 RUN bundle exec bootsnap precompile app/ lib/
