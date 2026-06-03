@@ -13,7 +13,7 @@ export default defineConfig({
         outDir: "public/vite",
         rollupOptions: {
             output: {
-                manualChunks: undefined,
+                manualChunks: {},
             },
         },
     },
