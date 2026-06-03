@@ -18,14 +18,30 @@ ENV RAILS_ENV=${RAILS_ENV} \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 ARG RAILS_ENV=${RAILS_ENV}
-
+RUN apt-get install --no-install-recommends -y build-essential npm git
 FROM base AS build
 
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential npm git libpq-dev libyaml-dev pkg-config && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y \
+    curl \
+    gnupg \
+    git \
+    build-essential \
+    libpq-dev \
+    libyaml-dev \
+    pkg-config
+
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN node -v
+RUN npm -v
 
 COPY Gemfile Gemfile.lock ./
+
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
@@ -37,9 +53,6 @@ RUN npm install
 RUN bundle exec bootsnap precompile app/ lib/
 
 RUN rm -rf public/vite && RAILS_ENV=production ./bin/vite build
-
-
-FROM base
 
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
