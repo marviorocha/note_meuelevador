@@ -22,14 +22,20 @@ ARG RAILS_ENV=${RAILS_ENV}
 FROM base AS build
 
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential npm git libpq-dev libyaml-dev pkg-config && \
+    apt-get install --no-install-recommends -y curl ca-certificates gnupg build-essential git libyaml-dev pkg-config && \
+    mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+    apt-get update -qq && \
+    apt-get install --no-install-recommends -y nodejs && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
-
+RUN rm -rf public/vite && \
+    SECRET_KEY_BASE=dummy_key_for_build RAILS_ENV=production ./bin/vite build
 COPY . .
 
 RUN npm install
