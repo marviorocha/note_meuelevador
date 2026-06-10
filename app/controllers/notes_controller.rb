@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-    before_action :set_note, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!
+    before_action :set_note, only: [ :show, :edit, :update, :destroy ]
 
     def index
         if params[:query].present?
@@ -26,7 +27,7 @@ class NotesController < ApplicationController
                 end
             end
             respond_to do |format|
-                format.html { redirect_to notes_path, notice: 'Nota atualizada com sucesso.' }
+                format.html { redirect_to notes_path, notice: "Nota atualizada com sucesso." }
                 format.turbo_stream
             end
         else
@@ -40,7 +41,7 @@ class NotesController < ApplicationController
     def destroy
         @note.destroy
         respond_to do |format|
-            format.html { redirect_to notes_path, notice: 'Nota excluída com sucesso.' }
+            format.html { redirect_to notes_path, notice: "Nota excluída com sucesso." }
             format.json { head :no_content }
             format.turbo_stream
         end
@@ -53,6 +54,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-        params.expect(note: [:author_id, :subcategory_id, :status, :content, :characters, :is_new])
+        params.expect(note: [ :author_id, :subcategory_id, :status, :content, :characters, :is_new ])
     end
 end
