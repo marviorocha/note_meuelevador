@@ -1,0 +1,112 @@
+---
+engine_version: 0.5.0
+file_version: 2026-06-24 15:52:26.187590000 Z
+resources:
+- name: author
+  preferences:
+    display_name: Autor
+  updated_at: 2026-06-24 15:34:53.315154000 +00:00
+- name: category
+  preferences:
+    icon: tournament
+    columns:
+    - access_type: hidden
+      name: id
+  updated_at: 2026-06-24 15:52:26.187590000 +00:00
+- name: note
+  preferences:
+    columns:
+    - access_type: hidden
+      name: id
+    - reference:
+        name: author
+        display_name: Author
+        model_name: author
+        reference_type: belongs_to
+        foreign_key: author_id
+        primary_key: id
+        options: {}
+        polymorphic:
+        virtual: false
+      display_name: Autor
+      name: author_id
+    - reference:
+        name: subcategory
+        display_name: Subcategory
+        model_name: subcategory
+        reference_type: belongs_to
+        foreign_key: subcategory_id
+        primary_key: id
+        options: {}
+        polymorphic:
+        virtual: false
+      display_name: Categoria
+      name: subcategory_id
+    - display_name: Conteúdo
+      name: content
+    - access_type: hidden
+      name: created_at
+    - access_type: read_write
+      display_name: Atualizado
+      name: updated_at
+    - access_type: hidden
+      name: characters
+    - display_name: É Novo?
+      name: is_new
+  updated_at: 2026-06-24 15:47:46.509080000 +00:00
+- name: note_tag
+  preferences:
+    visible: false
+  updated_at: 2026-06-24 15:37:27.515275000 +00:00
+- name: subcategory
+  preferences:
+    display_name: Sub Categoria
+    icon: subtask
+  updated_at: 2026-06-24 15:37:17.928520000 +00:00
+- name: tag
+  preferences:
+    icon: tag
+  updated_at: 2026-06-24 15:37:08.064457000 +00:00
+- name: user
+  preferences:
+    display_name: Usuários
+  updated_at: 2026-06-24 15:34:43.173616000 +00:00
+configs:
+- key: header.links
+  value:
+  - name: "⭐ Star on GitHub"
+    path: https://github.com/motor-admin/motor-admin-rails
+  updated_at: 2026-06-24 15:24:54.509672000 +00:00
+- key: resources.note.columns.order
+  value:
+  - id
+  - subcategory_id
+  - status
+  - content
+  - characters
+  - is_new
+  - author_id
+  - updated_at
+  - created_at
+  updated_at: 2026-06-24 15:42:36.498776000 +00:00
+- key: resources.order
+  value:
+  - author
+  - category
+  - subcategory
+  - note_tag
+  - note
+  - tag
+  - user
+  updated_at: 2026-06-24 15:37:53.717922000 +00:00
+queries: []
+dashboards: []
+forms: []
+alerts: []
+api_configs:
+- id: 1
+  name: origin
+  url: "/"
+  preferences: {}
+  description:
+  updated_at: 2026-06-24 15:24:54.544739000 +00:00

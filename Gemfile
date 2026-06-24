@@ -46,3 +46,5 @@ gem "faker", "~> 3.5"
 gem "algoliasearch-rails"
 gem "rack-cors"
 gem "csv"
+
+gem "motor-admin", "~> 0.5.0"
