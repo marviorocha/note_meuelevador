@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "notes#index"
-
+  post "/ai/ask", to: "ai#ask"
   resources :notes
 
   namespace :api do

@@ -13,6 +13,21 @@ class NotesController < ApplicationController
     def show
     end
 
+    def new
+        @note = Note.new
+    end
+
+    def create
+        @note = Note.new(note_params)
+        @note.tag_names = params[:tag_names] if params[:tag_names].present?
+
+        if @note.save
+            redirect_to notes_path, notice: "Nota criada com sucesso."
+        else
+            render :new, status: :unprocessable_entity
+        end
+    end
+
     def edit
         @authors = Author.all
         @categories = Category.all
