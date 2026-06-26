@@ -5,7 +5,7 @@ class Note < ApplicationRecord
   has_many :tags, through: :note_tags
 
  enum :status, { revisar: 0, ok: 1, arquivado: 2 }
-
+  after_commit :sync_typesense
   include AlgoliaSearch
 
   algoliasearch disable_indexing: Rails.env.test? || ENV["ALGOLIA_ADMIN_API_KEY"].blank? do

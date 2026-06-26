@@ -43,10 +43,12 @@ gem "vite_rails"
 
 gem "faker", "~> 3.5"
 gem "activeadmin"
-gem "algoliasearch-rails"
+ 
 gem "rack-cors"
 gem "csv"
- 
+
 
 
 gem "cancancan", "~> 3.6"
+
+gem "typesense"
