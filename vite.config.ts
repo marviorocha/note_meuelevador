@@ -13,7 +13,11 @@ export default defineConfig({
         outDir: "public/vite",
         rollupOptions: {
             output: {
-                manualChunks: {},
+                manualChunks(id) {
+                    if (id.includes("node_modules")) {
+                        return "vendor";
+                    }
+                },
             },
         },
     },
