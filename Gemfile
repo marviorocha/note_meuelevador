@@ -42,9 +42,11 @@ gem "devise", "~> 4.9"
 gem "vite_rails"
 
 gem "faker", "~> 3.5"
-
+gem "activeadmin"
 gem "algoliasearch-rails"
 gem "rack-cors"
 gem "csv"
+gem "propshaft"
 
-gem "motor-admin", "~> 0.5.0"
+
+gem "cancancan", "~> 3.6"

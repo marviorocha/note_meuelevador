@@ -67,6 +67,7 @@ class Note < ApplicationRecord
     ]
 
     attributesForFaceting [
+      "category.name",
       "author.name",
       "subcategory.category.name",
       "subcategory.name",

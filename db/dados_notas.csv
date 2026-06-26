@@ -252,15 +252,13 @@ Detalhe exemplificando colisão da rampa móvel com a soleira da porta de pavime
 1451,4/16/2018,Cabine,Operador de Portas,porta e operador OK,,"Vista geral da porta e operador de portas da cabina.
  
 Os dispositivos e mecanismos foram inspecionados e testados. Não constatamos irregularidade.",Eliseu,255,FALSE
-1393,1/28/2017,Cabine,"Operador de Portas
-",rampa móvel colidindo com a soleira. ,,"Vista geral mostrando o dispositivo operador de portas da cabina.
+1393,1/28/2017,Cabine,"Operador de Portas",rampa móvel colidindo com a soleira. ,,"Vista geral mostrando o dispositivo operador de portas da cabina.
 As estruturas das portas da cabina devem ser capazes de suportar esforços de 30N perpendicularmente às mesmas.
 Foi constatado que a porta da cabina do elevador, quanto submetida a um pequeno esforço para fora, deflete de forma que a rampa de arraste do operador de portas da cabina projeta para fora, entrando em rota de colisão com as soleiras das portas de pavimento. Esta situação sujeita a acidentes, comprometendo as condições de uso seguro do elevador. 
 Necessita regularização.
  
 Detalhe exemplificando colisão da rampa móvel com a soleira da porta de pavimento quando a porta da cabina é forçada para fora (no caso de alguém apoiar contra a porta, por exemplo).",Eliseu,990,FALSE
-1410,11/20/2017,Cabine,"Operador de Portas
-",correia do operador de portas ressecada,,"A correia do operador de portas de ambas as cabinas encontram-se ressecadas, indicando fim da vida útil
+1410,11/20/2017,Cabine,"Operador de Portas",correia do operador de portas ressecada,,"A correia do operador de portas de ambas as cabinas encontram-se ressecadas, indicando fim da vida útil
 No caso de rompimento, sujeita a prender os passageiros no interior da cabina.
 Recomenda-se programar sua substituição.",Rômulo,358,FALSE
 934,1/1/2014,Cabine,Porta da Cabina,"porta flexível demais, segurança",,"P3-As estruturas das portas da cabina devem ser capazes de suportar esforços de 300 N perpendicularmente às mesmas. As portas da cabina desses elevadores são excessivamente flexíveis de tal forma que um pequeno esforço com as pontas dos dedos é capaz de deslocá-las a ponto de provocar uma colisão entre o dispositivo da porta da cabina e as soleiras das portas de pavimento provocando acidentes de graves consequências.
@@ -307,8 +305,7 @@ Os componentes de segurança: iluminação de emergência, alarme e interfone fo
 NM207 15.2 Dentro da cabina [...]
 15.2.2 Deve estar afixado o nome do instalador e o seu número de identificação do elevador. ",Máximo,426,FALSE
 1329,7/9/2016,Cabine,Sinalizações e Identificações,recomendação sobre identificação dos elevadores: usar mesma identificação de projeto,,"Observamos que a numeração que está sendo utilizada para a identificação dos elevadores diverge da numeração estabelecida em projeto, gerando confusões. Recomendamos que se adote a numeração estabelecida em projeto, conforme imagem reproduzida acima, que deverá ser afixada junto a cada um dos elevadores, permitindo a identificação pelos usuários.",Eliseu,412,FALSE
-1542,3/15/2025,Cabine,"Sinalizações e Identificações
-",identificação errada nos elevadores (especificar),,"A identificação do elevador está errada em vários componentes (cabine, contrapeso e quadro de força), sujeitando a confusões em situações de emergência. E ainda, evitando erros na geração de orçamentos de reparo. O equipamento é o número 40351, e tem identificações com o número 40353 (outro elevador). Necessita regularização. ",Eliseu,339,FALSE
+1542,3/15/2025,Cabine,"Sinalizações e Identificações",identificação errada nos elevadores (especificar),,"A identificação do elevador está errada em vários componentes (cabine, contrapeso e quadro de força), sujeitando a confusões em situações de emergência. E ainda, evitando erros na geração de orçamentos de reparo. O equipamento é o número 40351, e tem identificações com o número 40353 (outro elevador). Necessita regularização. ",Eliseu,339,FALSE
 320,6/20/2014,Cabine,Sistemas de Emergência,"bateria inoperante, NM7192",,"A fonte (bateria) para fornecimento de energia de emergência está inoperante. As boas condições de funcionamento da fonte de emergência é fundamental para a segurança dos passageiros quando na ocorrência da falta de energia convencional, mantendo em operação os dispositivos de segurança da cabina (comunicador, luz de emergência e alarme).
 NM7192 4.3.8.2 Os elevadores devem ser alimentados por uma fonte de emergência não necessariamente exclusiva satisfazendo aos seguintes requisitos: a) ser independente da linha e ligar a iluminação da cabina automaticamente dentro de 10 s, após a falta de alimentação da linha; b) ser capaz de alimentar a iluminação da cabina e os dispositivos de alarme pelo menos durante 1 h; c) alimentar pelo menos duas lâmpadas de igual potência, para iluminação da cabina, de forma a assegurar iluminamento mínimo de 2 lx num ponto localizado a 1,20 m de altura e a 0,30 m do painel de comando.",Eliseu,989,FALSE
 323,6/20/2014,Cabine,Sistemas de Emergência,"bateria inoperante, consequências, NM207",,"A fonte para fornecimento de energia de emergência para os elevadores (baterias) estão inoperantes. As boas condições de funcionamento da fonte de emergência é fundamental para a segurança dos passageiros quando na ocorrência da falta de energia convencional, mantendo em operação os dispositivos de segurança da cabina (comunicador, luz de emergência e alarme). 
@@ -392,21 +389,17 @@ Os cabos de comando são cabos elétricos flexíveis destinados à comunicação
 Os cabos de comando estão se apoiando nas estruturas ao longo da caixa de corrida.
 No funcionamento do elevador, esses cabos estão roçando nas quinas danificando seu isolamento, podendo vir a causar curtos e fechar circuitos, comprometendo a condição de uso seguro do equipamento.
 Os cabos de comando devem ser posicionados e fixados visando eliminar o contato entre o cabo e as estruturas e equipamentos na caixa de corrida.",Rômulo,878,FALSE
-1304,6/7/2016,Caixa de Corrida,"Cabos de Manobra
-",cabo de comando danificado,,"O cabo de comando do elevador foi constatado danificado, com isolamento rompido e condutor exposto.
+1304,6/7/2016,Caixa de Corrida,"Cabos de Manobra",cabo de comando danificado,,"O cabo de comando do elevador foi constatado danificado, com isolamento rompido e condutor exposto.
 Cabos de comando danificados sujeitam os elevador a falhas de funcionamento intermitentes e curto circuitos, que provocam comportamentos anômalos no equipamento.
 Deve-se proceder a regularização envolvendo a substituição do cabo.",Rômulo,464,FALSE
-1322,6/10/2016,Caixa de Corrida,"Cabos de Manobra
-","explicação dos cabos de comando, inspecionado, OK",,"Vistas mostrando instalações do cabo de comando ao longo da caixa de corrida, destinado à comunicação elétrica entre a cabina, dispositivos da caixa de corrida e o quadro de comando.
+1322,6/10/2016,Caixa de Corrida,"Cabos de Manobra","explicação dos cabos de comando, inspecionado, OK",,"Vistas mostrando instalações do cabo de comando ao longo da caixa de corrida, destinado à comunicação elétrica entre a cabina, dispositivos da caixa de corrida e o quadro de comando.
 O cabo foi inspecionado, não constatamos irregularidade.",Rômulo,330,FALSE
-1400,3/17/2017,Caixa de Corrida,"Cabos de Manobra
-",cabos roçando contra a parede da caixa de corrida,,"Vistas mostrando os cabos de comando ao longo da caixa de corrida.
+1400,3/17/2017,Caixa de Corrida,"Cabos de Manobra",cabos roçando contra a parede da caixa de corrida,,"Vistas mostrando os cabos de comando ao longo da caixa de corrida.
 Os cabos de comando são cabos elétricos flexíveis destinados à comunicação entre a cabina, dispositivos da caixa de corrida e o quadro de comando.
 O cabo de comando do elevador foi constatado roçando contra ressaltos na parede da caixa de corrida do elevador, sujeitando a danos ao isolamento dos cabos.
 Os cabos de comando devem ser posicionados e fixados visando eliminar o contato entre o cabo e as estruturas e equipamentos na caixa de corrida.
 Deve-se preceder a regularização.",Eliseu,723,FALSE
-1478,2/5/2019,Caixa de Corrida,"Cabos de Manobra
-","cabos danificados, com fios expostos, emenda, e pegando na parede. Substituição.",,"Vistas mostrando os cabos de comando, cabos flexíveis destinados à comunicação elétrica entre a cabina, dispositivos da caixa de corrida e o quadro de comando.
+1478,2/5/2019,Caixa de Corrida,"Cabos de Manobra","cabos danificados, com fios expostos, emenda, e pegando na parede. Substituição.",,"Vistas mostrando os cabos de comando, cabos flexíveis destinados à comunicação elétrica entre a cabina, dispositivos da caixa de corrida e o quadro de comando.
  Nos dois elevadores, os cabos de comando foram constatados com diversos danos em seu isolamento, além de diversos pontos de emenda.
 Os danos aos cabos já expuseram os fios energizados, sujeitando a falhas de funcionamento do elevador, choques e curto circuitos. E as emendas realizadas são indesejáveis por criarem pontos com mau contato que tornam o elevador suscetível a constantes falhas de funcionamento e paralisações.
 Estes danos ocorreram devido à condição irregular de instalação na qual o componente está submetido. Os cabos foram constatados instalados de tal forma que roçam sistematicamente contra a parede da caixa de corrida durante a movimentação do elevador.
@@ -895,8 +888,7 @@ O acesso não atende à norma. Deve existir corrimão junto à escada de acesso 
 NBR 7192 4.2.1  Acesso O acesso à casa de máquinas e casa de polias, tanto para pessoas como equipamento, deve ser fácil e seguro, mesmo em condições de intempéries e por locais de uso comum, obedecendo aos seguintes requisitos: o acesso deve ser feito por escada fixa, de material incombustível. As escadas não poderão formar um ângulo superior a 60º com a horizontal e devem ser equipadas com um corrimão metálico nos lados abertos, a sua largura deve ser no mínimo igual à da porta da casa de máquinas (ver 4.2.2.5).",Romulo,865,FALSE
 38,6/11/2014,Casa de Maquinas,Sinalizações e Identificação,"identificação dos equipamentos, norma",,"Falta a identificação dos equipamentos.
 NM207 15.15 Se partes de diferentes elevadores estão presentes em uma mesma casa de máquinas ou casa de polias, cada elevador deve ser identificado com um número ou uma letra invariavelmente usada em todas as partes (máquina, controle, limitador de velocidade, interruptores, etc). Para facilitar a inspeção, manutenção, etc no topo da cabina, no poço ou em outros locais, onde necessário, o mesmo símbolo de identificação deve aparecer.",Eliseu,514,FALSE
-1417,12/16/2017,Casa de Maquinas,"Sinalizações e Identificação
-",gancho sem indicação de carga,,"Falta indicação da carga máxima permissível nos ganchos de levantamento da casa de máquinas.
+1417,12/16/2017,Casa de Maquinas,"Sinalizações e Identificação",gancho sem indicação de carga,,"Falta indicação da carga máxima permissível nos ganchos de levantamento da casa de máquinas.
 Tal irregularidade contraria a norma:
 NM207 15.4.6 A carga máxima permissível deve estar indicada nos vigamentos ou ganchos de levantamento.
 Essa exigência da norma visa evitar acidentes relacionados a manobras de equipamento pesado durante montagem ou reposição destes.
@@ -927,8 +919,7 @@ Em armários:
 Se todas as ligações são frontais, não se exige passagem atrás e nem passagem lateral. 
 0,5 m na lateral do armário. Onde existem vários armários alinhados, é suficiente a passagem por uma única extremidade. 
 A comunicação entre passagens deve ser pelo menos igual a 0,5 m.",Eliseu,904,FALSE
-1216,6/27/2013,"Casa de Máquinas
-",Iluminação e Instalações Elétricas,,,"13 Instalação elétrica 13.1 Generalidades 13.1.2 Nas casas de máquinas e casas de polias é necessária uma proteção contra contato direto, por meio de coberturas possuindo um grau de proteção pelo menos IP 2X.
+1216,6/27/2013,"Casa de Máquinas",Iluminação e Instalações Elétricas,,,"13 Instalação elétrica 13.1 Generalidades 13.1.2 Nas casas de máquinas e casas de polias é necessária uma proteção contra contato direto, por meio de coberturas possuindo um grau de proteção pelo menos IP 2X.
 
 13 Instalação elétrica 13.5 Fiação elétrica 13.5.3 Método de instalação 13.5.3.2 Conexões, terminais de ligação e conectores, exceto aqueles indicados em 13.1.2, devem ser localizados em armários, caixas ou painéis providos com esse propósito.",,483,FALSE
 736,1/1/2014,Freio de Segurança,Cabo do Limitador,"cabo de acionamento desenrolado, inoperante, segurança",,"Vista sob a cabina onde está instalado o freio de segurança. Observe que o cabo de acionamento do tambor do freio está completamente desenrolado, portanto o freio está completamente inoperante. Compromete gravemente a segurança.",Eliseu,231,FALSE
@@ -1146,8 +1137,7 @@ A prática de remendar de forma improvisada componentes ligados à segurança do
 ",lonas desgastadas,,"Uma das lonas do freio está desgastada, comprometendo as boas condições de frenagem do conjunto. Recomenda-se procedimentos de manutenção envolvendo a substituição das lonas desgastadas.",Eliseu,200,FALSE
 118,6/18/2014,Máquina de Tração,"Freio da Máquina
 ","falta lubrificação das articulações das sapatas do freio, regularização",,Vista geral do conjunto de acionamento do freio da máquina de tração. Falta lubrificação das articulações das sapatas do freio. O ressecamento das articulações sujeita o freio a travamentos com falhas de operação graves. Observe que as graxeiras estão lacradas por tinta. Necessita procedimentos de manutenção para regularização.,Eliseu,343,FALSE
-1466,9/17/2018,Máquina de Tração,"Freio da Máquina
-","freio bobina simples, adequação à norma atual",,"O freio instalado na máquina de tração é de bobina simples. Não atende à norma atual NM 207.
+1466,9/17/2018,Máquina de Tração,"Freio da Máquina","freio bobina simples, adequação à norma atual",,"O freio instalado na máquina de tração é de bobina simples. Não atende à norma atual NM 207.
  
 NM207 12.4.2.1 [...]Todos os componentes mecânicos do freio que tomam parte na ação de freada no tambor ou disco devem ser instalados em duplicata e ter dimensões de modo que se um dos componentes não estiver trabalhando no tambor ou disco, mesmo assim deverá continuar a ser exercido um esforço de freada suficiente para redução da velocidade do carro com a carga nominal. Qualquer núcleo de bobina é considerado como sendo uma parte mecânica, enquanto que qualquer bobina não.
  
@@ -1214,8 +1204,7 @@ Deve-se proceder à regularização envolvendo a troca das borrachas e realinham
 215,6/20/2014,Máquina de Tração,Motor Elétrico,isolamento carbonizados,,Algumas bobinas do motor estão com indícios de superaquecimento. Os isolamentos estão carbonizados sujeitando a curto circuitos entre as espiras. Necessita procedimentos de revitalização com aplicação de resina isolante.,Eliseu,234,FALSE
 217,6/20/2014,Máquina de Tração,Motor Elétrico,"escovas do motor desgastadas, substituição das escovas",,"As escovas do motor da máquina de tração estão desgastadas, com comprometimento das boas condições de funcionamento. Manter o equipamento funcionando com escovas desgastadas sujeita o equipamento a falhas e os coletores a danos. Devem-se fazer as substituições das escovas.",Eliseu,276,FALSE
 221,6/19/2014,Máquina de Tração,Motor Elétrico,"o motor foi inspecionado, nao constatamos irregularidades",,"Vista mostrando o coletor e as escovas do motor da máquina de tração. Os coletores e escovas foram inspecionados, os motores e moto geradores apresentam-se em boa condição de funcionamento, não constatamos irregularidades.",Eliseu,236,FALSE
-1490,2/11/2019,Máquina de Tração,"Motor Elétrico
-",,,"No motor da máquina de tração do elevador, foi constatado existência de ruído mecânico anormal no motor durante movimentação do elevador, provavelmente devido a deficiência de lubrificação nos mancais.
+1490,2/11/2019,Máquina de Tração,"Motor Elétrico",,,"No motor da máquina de tração do elevador, foi constatado existência de ruído mecânico anormal no motor durante movimentação do elevador, provavelmente devido a deficiência de lubrificação nos mancais.
 Tal irregularidade sujeita o motor a desgaste prematuro.
 Necessita regularização.",Rômulo,427,FALSE
 1533,3/6/2025,Máquina de Tração,Polia de Tração,polia de tração desgastada mas cabos ainda Ok.,,"A polia de tração do elevador se encontra em estágio avançado de desgaste, com os cabos já se aproximando de apoiar no fundo do canal. Caso algum dos cabos se apoie no fundo do canal (é possível ver marcas no canal da polia quando isso acontece) é necessário a substituição do conjunto. Recomenda-se o acompanhamento.",Rômulo,360,FALSE
@@ -1355,8 +1344,7 @@ NM207 15.4.3 O sentido de movimento do carro deve ser claramente indicado na má
 NM207 15 Avisos e instruções de operação 15.1 Disposições gerais Quaisquer rótulos, avisos e instruções de operação devem ser legíveis e facilmente compreensíveis (se necessário ajudado com sinais e símbolos). Eles devem ser indeléveis, de material durável, colocados em uma posição visível e redigidos na língua do país onde o elevador está instalado (ou, se necessário, em várias línguas).",Eliseu,572,FALSE
 199,6/18/2014,Máquina de Tração,Sinalização e Identificações,"falta a identificação dos elevadores e seus componentes, conforme norma",,"Falta a identificação dos elevadores e seus componentes, conforme norma.
 NM207 15 Avisos e instruções de operação 15.15 [...] Se partes de diferentes elevadores estão presentes em uma mesma casa de máquinas ou casa de polias, cada elevador deve ser identificado com um número ou uma letra invariavelmente usada em todas as partes (máquina, controle, limitador de velocidade, interruptores, etc). Para facilitar a inspeção, manutenção, etc no topo da cabina, no poço ou em outros locais, onde necessário, o mesmo símbolo de identificação deve aparecer.",Eliseu,639,FALSE
-1544,3/15/2025,Máquina de Tração,"Sinalização e Identificações
-",máquina sem identificação,,A máquina de tração do elevador não possui o número de identificação. Necessita regularização. ,Eliseu,106,FALSE
+1544,3/15/2025,Máquina de Tração,"Sinalização e Identificações",máquina sem identificação,,A máquina de tração do elevador não possui o número de identificação. Necessita regularização. ,Eliseu,106,FALSE
 135,6/18/2014,Máquina de Tração,Sistema de Resgate,"suporte, fixação improvisada",,"O suporte na parede, para guarda do dispositivo de resgate (volante) é inadequado.
 NM207 12.5.1.1 Se o volante é removível, ele deve ser colocado em um lugar acessível na casa de máquinas. Ele deve ser convenientemente marcado se houver qualquer risco de confusão com referência à máquina a qual pertence.",Eliseu,370,FALSE
 136,6/17/2014,Máquina de Tração,Sistema de Resgate,falta dispositivo de operação manual de emergência,,"Falta dispositivo para operação manual de emergência.
@@ -1422,8 +1410,7 @@ Os cabos de tração foram inspecionados ao longo de toda sua extensão, não co
 1526,12/26/2024,Plataforma de Acessibilidade,Botoeira,Falta botão soco na plataforma,Ok,"Deve existir botão soco na plataforma, conforme norma.
  
 ISO 9386-1 9.2.2.5 8.15.5 Um interruptor de segurança biestável deve ser montado na plataforma de forma que, quando operado, deve interromper diretamente o circuito de segurança. Este interruptor deve estar claramente visível e acessível ao usuário, fácil de operar e protegido contra operação involuntária ou por posicionamento ou por projeto.",Rômulo,432,FALSE
-1532,12/26/2024,Plataforma de Acessibilidade,"Sinalizações e Identificação
-","faltam as placas de avisos, informações e sinalizações na plataforma",Ok,"Faltam as placas de avisos, informações e sinalizações na plataforma
+1532,12/26/2024,Plataforma de Acessibilidade,"Sinalizações e Identificação","faltam as placas de avisos, informações e sinalizações na plataforma",Ok,"Faltam as placas de avisos, informações e sinalizações na plataforma
  
 ISO 9386-1 13.2 Na plataforma 13.2.1 Avisos contendo as informações mínimas indicadas abaixo devem ser exibidos na plataforma: a) carga nominal, em quilogramas, e o número máximo de pessoas que podem ser transportadas (a altura dos caracteres indicando as condições de carga nominal deve ser de no mínimo 1 O mm para letras maiúsculas e números e 7 mm para letras minúsculas); um exemplo de uma etiqueta típica de carga nominal é mostrado na Figura 11; b) o nome do fabricante, número de série e ano de instalação. ",Rômulo,655,FALSE
 807,6/12/2016,Poço,Amortecedores,"contato do nível de óleo falhando, regularização",,"Q3-. O contato do circuito de segurança do nível de óleo do amortecedor está falhando, causando interrupção no funcionamento do elevador. Necessita regularização.",Eliseu,173,FALSE
@@ -1456,8 +1443,7 @@ A Norma NBR 7192 determina: 4.7.3.4 O funcionamento do elevador somente será po
 Detalhes mostrando contatos eliminados eletricamente. A prática de eliminação de circuitos de segurança é ato intencional fortemente condenável 
  
 Detalhe mostrando os dois fios ligados no mesmo terminal, eliminando o contato de segurança.",Rômulo,1441,FALSE
-1378,11/21/2016,Poço,"Amortecedores
-",,,"Detalhe mostrando placa de característica técnica do amortecedor.
+1378,11/21/2016,Poço,"Amortecedores",,,"Detalhe mostrando placa de característica técnica do amortecedor.
  
 As instruções dos equipamentos devem conter indicações em português. Tal irregularidade contraria a norma. 
  
@@ -1526,8 +1512,7 @@ NM16042 5.9 Iluminação da caixa [...] Esta iluminação deve compreender uma l
 1330,7/10/2016,Poço,Infiltração e Drenagem,"água no poço e sem escada, falta de manutenção",,"A falta de acesso adequado e a presença de água nos poços acaba levando a um quadro de falta de manutenção nos equipamentos instalados nos poços.
 Este quadro se agrava devido à degradação prematura que a presença de água provoca nos componente.
 Após regularizado o acesso e impermeabilização dos poços, os equipamentos instalados devem passar por revisão geral.",Eliseu,496,FALSE
-1331,7/10/2016,Poço,"Infiltração e Drenagem
-",,,"A falta de acesso adequado e a presença de água nos poços acaba levando a um quadro de falta de manutenção nos equipamentos instalados nos poços.
+1331,7/10/2016,Poço,"Infiltração e Drenagem",,,"A falta de acesso adequado e a presença de água nos poços acaba levando a um quadro de falta de manutenção nos equipamentos instalados nos poços.
 Este quadro se agrava devido à degradação prematura que a presença de água provoca nos componente.
 Após regularizado o acesso e impermeabilização dos poços, os equipamentos instalados devem passar por revisão geral.",Eliseu,529,FALSE
 440,1/1/2014,Poço,"Infiltração e Drenagem
@@ -1613,8 +1598,7 @@ NBR 7192 4.1.7 Acesso à caixa para fins de emergência a)a abertura das portas 
 As portas de pavimento destes elevadores permitem a abertura utilizando-se chave de fenda ou mesmo pedaços de arame.
 Esta irregularidade compromete a segurança, uma vez que possibilita que pessoas não qualificadas ao serviço tenham acesso à caixa de corrida, sujeitando a vandalismo e acidentes graves envolvendo a queda de pessoas ou objetos.
 Recomenda-se a instalação de ilhós que atendam a norma.",Rômulo,1133,FALSE
-1414,12/16/2017,Porta de Pavimento,"Chave de Abertura Manual
-",portas de pavimento com ilhós removidos,,"A norma exige que a chave de emergência utilizada para abrir as portas a partir do pavimento seja especial, diferente de qualquer outra.
+1414,12/16/2017,Porta de Pavimento,"Chave de Abertura Manual",portas de pavimento com ilhós removidos,,"A norma exige que a chave de emergência utilizada para abrir as portas a partir do pavimento seja especial, diferente de qualquer outra.
 Diversas portas de pavimentos dos elevadores foram constatadas com o ilhós para a abertura da porta eliminados, permitindo a abertura utilizando-se chave de fenda ou mesmo pedaços de arame.
 Esta irregularidade compromete gravemente a segurança, uma vez que possibilita que pessoas não qualificadas ao serviço tenham acesso à caixa de corrida, sujeitando a vandalismo e acidentes graves envolvendo a queda de pessoas ou objetos.
 Necessita regularização.",Rômulo,779,FALSE
@@ -1636,8 +1620,7 @@ Necessita regularização.",Rômulo,779,FALSE
 1501,12/22/2024,Porta de Pavimento,"Folhas de Porta, Batente e Soleiras",folga excessiva entre a porta de pavimento e o marco da porta,,"NBR NM 207 7 Portas de pavimento 7.1 Disposições gerais 7.1.1 As aberturas na caixa, que dão acesso à cabina, devem ser providas de portas do tipo corrediça horizontal automática, não perfuradas, que fechem toda a abertura. Quando fechadas, as folgas entre folhas ou entre folhas e longarinas, vergas ou soleiras, devem ser as menores possíveis. A condição será considerada atendida quando essas folgas não excederem 6 mm. ",Rômulo,434,FALSE
 1516,12/26/2024,Porta de Pavimento,"Folhas de Porta, Batente e Soleiras",folgas entre folhas de porta e marco de porta,,"NM 16042  7 Portas de pavimento 7.1 Disposições gerais As aberturas na caixa, que dão acesso à cabina, devem ser providas de portas do tipo corrediça horizontal automática, não perfuradas, que fechem toda a abertura. Quando fechadas, as folgas entre folhas ou entre folhas e longarinas, vergas ou soleiras, devem ser as menores possíveis. A condição será considerada atendida quando essas folgas não excederem 6 mm. Este valor, devido ao desgaste, pode alcançar 10 mm.",Rômulo,516,FALSE
 1523,12/26/2024,Porta de Pavimento,"Folhas de Porta, Batente e Soleiras",plataforma pegando na estrutura,,ISO 9386-1 9.1.1.4.4 A distância horizontal entre bordas da plataforma e o fechamento ou entre plataforma e soleiras de pavimento não pode exceder 20 mm.,Rômulo,164,FALSE
-1293,6/7/2016,Porta de Pavimento,"Folhas de Porta, Batente e Soleiras
-",portas sem aba corta fogo,,"Vista das portas de pavimento pela parte interna da caixa de pavimento.
+1293,6/7/2016,Porta de Pavimento,"Folhas de Porta, Batente e Soleiras",portas sem aba corta fogo,,"Vista das portas de pavimento pela parte interna da caixa de pavimento.
 Diversas portas de pavimento foram constatadas sem aba corta-fogo. As abas corta-fogo são componentes de segurança, responsáveis por retardar a propagação de chamas e fumaça através da caixa de corrida em casos de incêndio.
 Os componentes de segurança dos elevadores devem ser mantidos permanentemente em perfeitas condições de funcionamento.
 Necessita regularização.
@@ -1753,8 +1736,7 @@ b) 45 mm para as portas de abertura central. ",Rômulo,536,FALSE
 Diversas portas de pavimento foram constatadas montadas de tal forma que o rolete do dispositivo de arraste da porta está roçando contra a estrutura da porta.
 Esta situação sujeita ao funcionamento pesado e ruidoso das portas, sobrecarregando o dispositivo operador de portas.
 Necessita regularização.",Rômulo,548,FALSE
-1524,12/26/2024,Porta de Pavimento,"Mecanismos de Fechamento de Porta
-",porta da plataforma ficando travada aberta.,,"ISO 9386-1 9.1.2.1 Portas de pavimento. As aberturas dando acesso à plataforma devem ser providas de portas de pavimento as quais: b) são de fechamento autônomo, porém estáveis na posição aberta.",Rômulo,241,FALSE
+1524,12/26/2024,Porta de Pavimento,"Mecanismos de Fechamento de Porta",porta da plataforma ficando travada aberta.,,"ISO 9386-1 9.1.2.1 Portas de pavimento. As aberturas dando acesso à plataforma devem ser providas de portas de pavimento as quais: b) são de fechamento autônomo, porém estáveis na posição aberta.",Rômulo,241,FALSE
 522,1/1/2014,Porta de Pavimento,"Mecanismos de Fechamento de Porta
 ","limpeza, regulagem para possibilitar o fechamento",,"Vista geral do hall dos elevadores mostrando as portas de pavimento. Diversas portas necessitam regulagem, e limpeza dos mecanismos dos fechos eletromecânicos e fechadores hidráulicos de forma a garantir o fechamento automático das portas quando as cabinas estão ausentes dos pavimentos.",Eliseu,290,FALSE
 596,1/1/2014,Porta de Pavimento,"Mecanismos de Fechamento de Porta
@@ -1849,14 +1831,12 @@ d) o travamento das portas de pavimento deve ser confirmado eletricamente por me
 1538,3/15/2025,Porta de Pavimento,,portas de pavimento sem irregularidades,,Não constatamos irregularidades de manutenção na portas de pavimento.,Rômulo,112,FALSE
 1512,12/26/2024,"Porta de Pavimento
 ",Chave de Abertura Manual,"Chave da acesso por técnico porta de pavimento, NM 207",,NBR NM 207 7.7.3.2 Destravamento de emergência Quaisquer uma das portas de pavimento deve ser capaz de ser destravada do exterior por uma chave que se ajuste ao triângulo de destravamento definido no anexo B ,Rômulo,254,FALSE
-1465,9/13/2018,"Porta de Pavimento
-",Chave de Abertura Manual,Portas sem ilhós de segurança,,"Falta ilhós de segurança em diversas portas de pavimento, permitindo que se faça a abertura da porta utilizando chave de fenda ou mesmo pedaços de arame.
+1465,9/13/2018,"Porta de Pavimento",Chave de Abertura Manual,Portas sem ilhós de segurança,,"Falta ilhós de segurança em diversas portas de pavimento, permitindo que se faça a abertura da porta utilizando chave de fenda ou mesmo pedaços de arame.
 Esta irregularidade compromete a segurança, uma vez que possibilita que pessoas não qualificadas ao serviço tenham acesso à caixa de corrida, sujeitando a vandalismo e acidentes graves envolvendo a queda de pessoas ou objetos.
 NBR 7192 4.1.7 Acesso à caixa para fins de emergência a)a abertura das portas deve ser efetuada somente por meio de chave especialmente projetada para impedir a fácil duplicação. De modo algum deve ser possível abrir as portas por meio de ferramentas normais; b)o furo para introdução da chave especial deve ser coberto;
  
 Necessita regularização.",Rômulo,1011,FALSE
-1510,12/26/2024,"Porta de Pavimento
-",Mecanismos de Fechamento de Porta,abertura livre mínima das portas nm 207,,"NBR NM 207 7.3.2 Largura As portas de pavimento deverão proporcionar uma abertura livre mínima de 0,8 m.",Rômulo,182,FALSE
+1510,12/26/2024,"Porta de Pavimento",Mecanismos de Fechamento de Porta,abertura livre mínima das portas nm 207,,"NBR NM 207 7.3.2 Largura As portas de pavimento deverão proporcionar uma abertura livre mínima de 0,8 m.",Rômulo,182,FALSE
 356,1/1/2014,Quadro de Comando,Aterramento,"Falta aterramento, norma",,Falta o aterramento da porta do quadro de comando. Toda instalação elétrica deve obedecer à NBR 5410,Eliseu,103,FALSE
 377,1/1/2014,Quadro de Comando,Chaves Contatoras,"contatos desgastados, mal funcionamento",,"As chaves contatoras estão com os contatos desgastados. As chaves contatoras são responsáveis pelo acionamento do motor de tração. As irregularidades nos contatos sujeitam o elevador a deficiência na alimentação elétrica que provocam mau funcionamento, perda de potencia, aquecimentos, falta de fase e paralisações.",Eliseu,318,FALSE
 353,1/1/2014,Quadro de Comando,Componentes Elétricos,"sistema obsoleto, substituição",,"O quadro de comando atual é operado a relés e chaves contatoras, estes dispositivos eletromecânicos responsáveis pelo sequenciamento das operações dos elevadores apresenta as seguintes desvantagens: Desatualização tecnológica do sistema de acionamento. Baixa velocidade no processamento das informações e codificações dos sinais, retardando seleção e despacho dos elevadores. Maior ocorrência de falhas devido à grande quantidade de componentes eletromecânicos (relés, capacitores, chaves e contatores).",Eliseu,507,FALSE
@@ -1929,8 +1909,7 @@ Necessita regularização.",Rômulo,759,FALSE
 A falta de tampa nos contatos sujeita à oxidação dos terminais e depósito de sujeiras, causando falhas de funcionamento no elevador.
 Todas as partes sob tensão elétrica nos elevadores devem estar protegidas contra contato acidental.
 Necessita regularização.",Rômulo,508,FALSE
-1531,12/26/2024,Quadro de Comando,"Fechamento e Proteções
-",fechamento e proteção da plataforma,,"fechamento e proteção da plataforma
+1531,12/26/2024,Quadro de Comando,"Fechamento e Proteções",fechamento e proteção da plataforma,,"fechamento e proteção da plataforma
  
 ISO 9386-1 4.2 Proteção contra perigos Deve ser incorporada proteção para minimizar o risco em todas as seguintes situações de perigo: a) corte, esmagamento, aprisionamento ou escoriação; d) choque físico e impacto; ",Rômulo,298,FALSE
 1054,1/1/2014,Quadro de Comando,"Fechamento e Proteções
@@ -1969,10 +1948,8 @@ Necessita regularização.",Rômulo,221,FALSE
 ",adulteração de circuitos,,"Alguns circuitos foram eliminados, sem identificação ou registro das alterações. A adulteração ou eliminação de circuitos dos elevadores é procedimento fortemente condenável, particularmente quando feitas sem justificativa ou registro.",Eliseu,238,FALSE
 392,1/1/2014,Quadro de Comando,"Interligações e Fiações Elétricas
 ","emendas improvisadas, curto circuitos",,"Banco de resistores com indícios de curto circuito. As ligações foram refeitas com emendas de forma improvisada, permanecendo fiações expostas que sujeitam a novos curto circuitos.",Eliseu,183,FALSE
-1306,6/7/2016,Quadro de Comando,"Interligações e Fiações Elétricas
-",aterramento frouxo no quadro,,Existem fiações de aterramento frouxas nos quadros. As boas condições de aterramento do elevador são fundamentais para o bom funcionamento e uso seguro do equipamento. Necessita regularização.,Rômulo,244,FALSE
-1319,6/10/2016,Quadro de Comando,"Interligações e Fiações Elétricas
-",quadro Ok somento com aterramento frouxo,,"Vistas mostrando os quadros de comando dos elevadores. Os equipamentos foram inspecionados e testados. 
+1306,6/7/2016,Quadro de Comando,"Interligações e Fiações Elétricas",aterramento frouxo no quadro,,Existem fiações de aterramento frouxas nos quadros. As boas condições de aterramento do elevador são fundamentais para o bom funcionamento e uso seguro do equipamento. Necessita regularização.,Rômulo,244,FALSE
+1319,6/10/2016,Quadro de Comando,"Interligações e Fiações Elétricas",quadro Ok somento com aterramento frouxo,,"Vistas mostrando os quadros de comando dos elevadores. Os equipamentos foram inspecionados e testados. 
 Não constatamos irregularidades quanto a seu funcionamento, todavia as ligações ao terra do quadro de força estão frouxas. Necessita regularização.
 NM207 13.5.5 Aterramento: Todas as partes metálicas do elevador não submetidas a tensão, tanto colocadas na casa de máquinas como na caixa, devem estar aterradas.",Rômulo,557,FALSE
 361,1/1/2014,Quadro de Comando,"Interligações e Fiações Elétricas
@@ -2087,8 +2064,7 @@ Nos quadros de comando eletromecânicos (sem inversor de frequência), a corrent
 Os interruptores principais devem XXXXX.
 NM207 13 Instalação elétrica 13.4 Interruptores 13.4.2 O interruptor geral (se existir) e os interruptores principais devem ter capacidade de interrupção de acordo com a potência instalada e ter, como mínimo, proteção contra curto circuito por fusíveis. Devem possuir um grau de proteção pelo menos IP 2X. Os interruptores principais dos elevadores, com as suas proteções, devem estar colocados na casa de máquinas e situados no lado oposto às dobradiças da porta de entrada e distante dela no máximo 1 m. Os interruptores principais devem possuir travamento mecânico na posição desligado com porta-cadeados. Quando, a partir deste interruptor, não se enxergar a máquina correspondente, deverá haver em série um segundo interruptor a partir do qual se possa enxergar a respectiva máquina. Além disso, para cada elevador deve ser instalado um interruptor diferencial com proteção máxima de 30mA, que proteja os circuitos de luz da cabina, alarme e tomada elétrica para 250 V com ligação a terra. Quando existir mais de uma máquina na casa de máquinas, cada máquina e seu correspondente interruptor devem possuir identificações iguais, e tais identificações devem estar claramente visíveis.",Eliseu,1427,FALSE
 1473,12/11/2018,Quadro de Força,Componentes Elétricos,"fusível, o que é",,Os fusíveis são dispositivos responsáveis pela proteção contra curto circuitos e sobrecarga elétrica.,Rômulo,144,FALSE
-1421,12/17/2017,Quadro de Força,"Componentes Elétricos
-",quadro de força sem fusíveis,,"Os interruptores principais fornecidos durante serviços de modernização não atendem aos requisitos mínimos de segurança exigidos por norma, por não possuírem proteção por fusíveis.
+1421,12/17/2017,Quadro de Força,"Componentes Elétricos",quadro de força sem fusíveis,,"Os interruptores principais fornecidos durante serviços de modernização não atendem aos requisitos mínimos de segurança exigidos por norma, por não possuírem proteção por fusíveis.
 NM 207 13 Instalação elétrica 13.4 Interruptores 13.4.2 O interruptor geral (se existir) e os interruptores principais devem ter capacidade de interrupção de acordo com a potência instalada e ter, como mínimo, proteção contra curto circuito por fusíveis. 
 O uso de fusíveis é exigido por realizarem corte da alimentação mais rápido do que os disjuntores, proporcionando proteção adequada para os componentes eletrônicos do quadro de comando em casos de curto circuito.
 Necessita regularização.

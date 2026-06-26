@@ -34,7 +34,7 @@ export default class extends Controller {
         // Adiciona helpers para o template
         search.addWidgets([
             {
-                render() {},
+                render() { },
                 init(options) {
                     options.helper.setQueryParameter('facets', ['*']);
                 }
@@ -147,10 +147,11 @@ export default class extends Controller {
                     <div class="card-body p-4">
                         {{#tags.length}}
                         <div class="flex flex-wrap gap-1 mb-2">
-                            {{#tags}}
-                                <span class="badge badge-ghost badge-xs text-[10px] uppercase px-1.5 py-2">
+                           {{#tags}}
+                                <a href="#" onclick="document.querySelector('#searchbox input').value = '{{name}}'; document.querySelector('#searchbox input').dispatchEvent(new Event('input')); return false;"
+                                   class="badge badge-sm badge-outline hover:bg-slate-800 hover:text-white transition duration-300">
                                    {{name}}
-                                </span>
+                                </a>
                             {{/tags}}
                         </div>
                         {{/tags.length}}

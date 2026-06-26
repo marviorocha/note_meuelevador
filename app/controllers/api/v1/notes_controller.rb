@@ -6,10 +6,12 @@ module Api
       # GET /api/v1/notes
       def index
         @notes = Note.includes(:author, :subcategory, :tags).all
+        render json: @notes, include: [ :author, :subcategory, :tags ]
       end
 
       # GET /api/v1/notes/1
       def show
+        render json: @note, include: [ :author, :subcategory, :tags ]
       end
 
       # POST /api/v1/notes
@@ -17,10 +19,8 @@ module Api
         @note = Note.new(note_params_with_associations)
 
         if @note.save
-          if params[:tags].present?
-            @note.tags = Array(params[:tags]).map { |name| Tag.find_or_create_by(name: name) }
-          end
-          render :show, status: :created
+          @note.tags = Array(params[:tags]).map { |name| Tag.find_or_create_by(name: name) } if params[:tags].present?
+          render json: @note, status: :created, include: [ :author, :subcategory, :tags ]
         else
           render json: @note.errors, status: :unprocessable_entity
         end
@@ -29,10 +29,8 @@ module Api
       # PATCH/PUT /api/v1/notes/1
       def update
         if @note.update(note_params_with_associations)
-          if params[:tags].present?
-            @note.tags = Array(params[:tags]).map { |name| Tag.find_or_create_by(name: name) }
-          end
-          render :show
+          @note.tags = Array(params[:tags]).map { |name| Tag.find_or_create_by(name: name) } if params[:tags].present?
+          render json: @note, include: [ :author, :subcategory, :tags ]
         else
           render json: @note.errors, status: :unprocessable_entity
         end
@@ -73,7 +71,7 @@ module Api
       end
 
       def note_params
-        params.expect(note: [:author_id, :subcategory_id, :status, :content, :characters, :is_new])
+        params.expect(note: [ :author_id, :subcategory_id, :status, :content, :characters, :is_new ])
       end
     end
   end

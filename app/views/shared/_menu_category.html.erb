@@ -1,0 +1,45 @@
+<div class="flex flex-wrap w-72 shrink-0 hidden md:block">
+  <div class="w-full p-4 rounded-lg">
+    
+    <ul class="menu bg-slate-200 text-base-200 rounded-box p-4">
+      <li>
+        <%= link_to notes_path(busca: params[:busca]), class: ("active flex justify-between" if params[:category].blank? && params[:subcategory].blank?) || "flex justify-between" do %>
+          <span>Todas as notas</span>
+          <span class="badge badge-sm badge-ghost"><%= Note.count %></span>
+        <% end %>
+      </li>
+
+      <% @category_tree.each do |cat_name, subcategories| %>
+        <% cat_is_active = params[:category] == cat_name %>
+        <% sub_is_active = subcategories.include?(params[:subcategory]) %>
+        
+        <li>
+          <details <%= "open" if cat_is_active || sub_is_active %>>
+            <summary class="flex justify-between">
+              <span><%= cat_name %></span>
+              <span class="badge badge-sm badge-ghost"><%= @category_counts[cat_name] || 0 %></span>
+            </summary>
+            <ul>
+              <li>
+                <%= link_to notes_path(busca: params[:busca], category: cat_name), class: ("active flex justify-between" if cat_is_active && params[:subcategory].blank?) || "flex justify-between" do %>
+                  <span>Todas de <%= cat_name %></span>
+                  <span class="badge badge-sm badge-ghost"><%= @category_counts[cat_name] || 0 %></span>
+                <% end %>
+              </li>
+              
+              <% subcategories.each do |sub_name| %>
+                <li>
+                  <%= link_to notes_path(busca: params[:busca], category: cat_name, subcategory: sub_name), class: ("active flex justify-between" if params[:subcategory] == sub_name) || "flex justify-between" do %>
+                    <span><%= sub_name %></span>
+                    <span class="badge badge-sm badge-ghost"><%= @subcategory_counts[sub_name] || 0 %></span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </details>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+ 
+ 
