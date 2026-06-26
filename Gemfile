@@ -46,7 +46,7 @@ gem "activeadmin"
 gem "algoliasearch-rails"
 gem "rack-cors"
 gem "csv"
-gem "propshaft"
+ 
 
 
 gem "cancancan", "~> 3.6"
