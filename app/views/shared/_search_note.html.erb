@@ -1,16 +1,2 @@
 
-      <%= form_with url: notes_path, method: :get, class: "w-full max-w-2xl flex gap-2", data: { turbo_frame: "_top" } do |f| %>
-        <%= f.text_field :busca, 
-                         value: params[:busca], 
-                         placeholder: "Pesquisar notas...", 
-                         class: "input input-bordered w-full" %>
-                         
-        <%= f.select :category, 
-                     options_from_collection_for_select(@categories, :name, :name, params[:category]), 
-                     { include_blank: "Todas as categorias" }, 
-                     class: "select select-bordered" %>
-                     
-        <%= f.submit "Buscar", class: "btn btn-primary" %>
-        
-        
-      <% end %>
+<div id="ais-searchbox" class="mb-4"></div>

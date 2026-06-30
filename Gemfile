@@ -52,3 +52,4 @@ gem "csv"
 gem "cancancan", "~> 3.6"
 
 gem "typesense"
+gem "kaminari"

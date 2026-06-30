@@ -10,6 +10,8 @@
     <!-- or include the full Satellite theme -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="typesense-host" content="<%= ENV['TYPESENSE_HOST'] %>">
+    <meta name="typesense-search-key" content="<%= ENV['TYPESENSE_SEARCH_KEY'] %>">
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'application' %>
     <%= yield :head %>

@@ -4,79 +4,97 @@ class Note < ApplicationRecord
   has_many :note_tags
   has_many :tags, through: :note_tags
 
- enum :status, { revisar: 0, ok: 1, arquivado: 2 }
-  after_commit :sync_typesense
-  include AlgoliaSearch
+  enum :status, { revisar: 0, ok: 1, arquivado: 2 }
 
-  algoliasearch disable_indexing: Rails.env.test? || ENV["ALGOLIA_ADMIN_API_KEY"].blank? do
-    # Attributes to be indexed
-    attributes :content, :status
+  after_commit :sync_typesense, on: [:create, :update]
+  after_commit :remove_from_typesense, on: [:destroy]
 
-    attribute :hierarchicalCategories do
-      if subcategory&.category
-        {
-          lvl0: subcategory.category.name,
-          lvl1: "#{subcategory.category.name} > #{subcategory.name}"
-        }
-      end
+  def self.search(query, options = {})
+    query = '*' if query.blank?
+    
+    search_parameters = {
+      'q' => query,
+      'query_by' => 'content,author.name,category.name,subcategory.name,tags'
+    }
+
+    if options[:filters].present?
+      search_parameters['filter_by'] = options[:filters]
     end
 
-    attribute :author do
-      if author
-        {
-          id: author.id,
-          name: author.name
-        }
+    begin
+      results = TYPESENSE_CLIENT.collections['notes'].documents.search(search_parameters)
+      
+      note_ids = results['hits'].map { |hit| hit['document']['id'].to_i }
+      
+      if note_ids.any?
+        Note.where(id: note_ids).in_order_of(:id, note_ids)
+      else
+        Note.none
       end
+    rescue Typesense::Error::ObjectNotFound
+      Note.none
     end
+  end
 
-    attribute :category do
-      if subcategory&.category
-        {
-          id: subcategory.category.id,
-          name: subcategory.category.name
-        }
-      end
+  def typesense_document
+    {
+      'id' => id.to_s,
+      'content' => content.to_s,
+      'author.name' => author&.name.to_s,
+      'category.name' => subcategory&.category&.name.to_s,
+      'subcategory.name' => subcategory&.name.to_s,
+      'status' => status.to_s,
+      'tags' => tags.map(&:name)
+    }
+  end
+
+  private
+
+  def sync_typesense
+    begin
+      TYPESENSE_CLIENT.collections['notes'].documents.upsert(typesense_document)
+    rescue Typesense::Error::ObjectNotFound
+      self.class.create_typesense_collection
+      TYPESENSE_CLIENT.collections['notes'].documents.upsert(typesense_document)
+    rescue => e
+      Rails.logger.error "Typesense sync failed: #{e.message}"
     end
+  end
 
-    attribute :subcategory do
-      if subcategory
-        {
-          id: subcategory.id,
-          name: subcategory.name
-        }
-      end
+  def remove_from_typesense
+    begin
+      TYPESENSE_CLIENT.collections['notes'].documents[id.to_s].delete
+    rescue => e
+      Rails.logger.error "Typesense delete failed: #{e.message}"
     end
+  end
 
-    attribute :tags do
-      tags.map do |tag|
-        {
-          id: tag.id,
-          name: tag.name
-        }
-      end
+  def self.create_typesense_collection
+    schema = {
+      'name' => 'notes',
+      'fields' => [
+        { 'name' => 'content', 'type' => 'string' },
+        { 'name' => 'author.name', 'type' => 'string', 'facet' => true },
+        { 'name' => 'category.name', 'type' => 'string', 'facet' => true },
+        { 'name' => 'subcategory.name', 'type' => 'string', 'facet' => true },
+        { 'name' => 'status', 'type' => 'string', 'facet' => true },
+        { 'name' => 'tags', 'type' => 'string[]', 'facet' => true }
+      ]
+    }
+    begin
+      TYPESENSE_CLIENT.collections['notes'].delete
+    rescue Typesense::Error::ObjectNotFound
+      # Ignore
     end
+    TYPESENSE_CLIENT.collections.create(schema)
+  end
 
-    searchableAttributes [
-      "content",
-      "status",
-      "author.name",
-      "subcategory.name",
-      "subcategory.category.name",
-      "tags.name"
-    ]
-
-    attributesForFaceting [
-      "category.name",
-      "author.name",
-      "subcategory.category.name",
-      "subcategory.name",
-      "tags.name",
-      "status",
-      "hierarchicalCategories.lvl0",
-      "hierarchicalCategories.lvl1"
-    ]
-
-    ranking [ "words", "typo", "attribute" ]
+  def self.reindex_all
+    create_typesense_collection
+    
+    find_in_batches(batch_size: 100) do |notes|
+      documents = notes.map(&:typesense_document)
+      TYPESENSE_CLIENT.collections['notes'].documents.import(documents)
+    end
   end
 end
