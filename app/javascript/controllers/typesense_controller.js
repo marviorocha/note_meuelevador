@@ -68,7 +68,7 @@ export default class extends Controller {
           root: "w-full",
           form: "relative flex items-center",
           input:
-            "input input-bordered input-lg w-full pr-10 w-[530px] focus:outline-none",
+            "input input-bordered input-lg   pr-10 w-[730px] focus:outline-none",
           submit: "absolute right-10 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs p-1",
           reset: "absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs p-1",
           loadingIndicator: "absolute right-20 top-1/2 -translate-y-1/2",
@@ -176,7 +176,10 @@ export default class extends Controller {
         },
         templates: {
           resetLabel({ hasRefinements }, { html }) {
-            return html`<span class="btn btn-outline btn-primary w-full" >Limpar filtros</span>`
+                return html`<div class="filter">
+                    <input class="btn btn-lg mx-2" type="radio" name="metaframeworks" aria-label="Limpar filtros"/>
+  <input class="btn btn-square btn-lg" type="reset" value="×"/>
+                    </div>`
           },
         },
       }),
