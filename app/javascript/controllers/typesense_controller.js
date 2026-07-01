@@ -177,8 +177,8 @@ export default class extends Controller {
         templates: {
           resetLabel({ hasRefinements }, { html }) {
                 return html`<div class="filter">
-                    <input class="btn btn-lg mx-2" type="radio" name="metaframeworks" aria-label="Limpar filtros"/>
-  <input class="btn btn-square btn-lg" type="reset" value="×"/>
+                    <input class="btn btn-md mx-2" type="radio" name="metaframeworks" aria-label="Limpar filtros"/>
+
                     </div>`
           },
         },
@@ -217,7 +217,7 @@ export default class extends Controller {
                               input.dispatchEvent(new Event("input", { bubbles: true }))
                             }
                           }}
-                          class="btn btn-outline btn-sm btn-primary  hover:bg-slate-800 hover:text-white transition duration-300 cursor-pointer"
+                          class="text-blue-600 hover:text-blue-700 px-2 py-1 hover:bg-blue-100 border border-blue-500 rounded transition duration-300 cursor-pointer"
                         >${tag}</button>
                       `)}
                     </div>
