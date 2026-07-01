@@ -53,3 +53,5 @@ gem "cancancan", "~> 3.6"
 
 gem "typesense"
 gem "kaminari"
+
+gem "rails_live_reload", "~> 0.5.0"

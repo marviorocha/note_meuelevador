@@ -32,6 +32,7 @@ export default class extends Controller {
       return
     }
 
+
     const typesenseAdapter = new TypesenseInstantSearchAdapter({
       server: {
         apiKey,
@@ -67,7 +68,7 @@ export default class extends Controller {
           root: "w-full",
           form: "relative flex items-center",
           input:
-            "input input-bordered w-full pr-10 focus:outline-none focus:border-primary",
+            "input input-bordered input-lg w-full pr-10 w-[530px] focus:outline-none",
           submit: "absolute right-10 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs p-1",
           reset: "absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs p-1",
           loadingIndicator: "absolute right-20 top-1/2 -translate-y-1/2",
@@ -93,7 +94,7 @@ export default class extends Controller {
         container: "#ais-stats",
         templates: {
           text({ nbHits, processingTimeMS }, { html }) {
-            return html`<span class="text-xs text-gray-400">${nbHits} nota${nbHits !== 1 ? "s" : ""} encontrada${nbHits !== 1 ? "s" : ""} em ${processingTimeMS}ms</span>`
+            return html`<span class="text-lg text-gray-600">${nbHits} nota${nbHits !== 1 ? "s" : ""} encontrada${nbHits !== 1 ? "s" : ""} em ${processingTimeMS}ms</span>`
           },
         },
       }),
@@ -104,23 +105,29 @@ export default class extends Controller {
         sortBy: ["name:asc"],
         cssClasses: {
           root: "w-full",
-          list: "menu menu-sm bg-slate-200 rounded-box p-2",
+          list: "text-normal text-gray-600  rounded-box p-2",
           item: "rounded",
           selectedItem: "font-semibold",
-          label: "flex justify-between w-full cursor-pointer",
+          label: "w-full cursor-pointer px-16",
           checkbox: "hidden",
-          count: "badge badge-sm badge-ghost ml-auto",
-          showMore: "btn btn-xs btn-ghost mt-1 w-full",
+          count: "badge  badge-sm badge-ghost ml-auto",
+          showMore: "btn btn-wide btn-sm  my-1 w-full [&.ais-RefinementList-showMore--disabled]:bg-gray-200 [&.ais-RefinementList-showMore--disabled]:text-gray-500 [&.ais-RefinementList-showMore--disabled]:cursor-not-allowed",
         },
         templates: {
           item({ label, count, isRefined }, { html }) {
             return html`
-              <span class="flex justify-between w-full ${isRefined ? "font-semibold text-primary" : ""}">
-                <span>${label}</span>
+              <span class="flex justify-between items-center  w-full ${isRefined ? "font-semibold text-info" : ""}">
+
+                <span class="flex items-center gap-2 py-1 cursor-pointer">
+                  <input type="checkbox" checked="${isRefined ? "checked" : ""}" class="checkbox checkbox-info" /> ${label}
+                </span>
                 <span class="badge badge-sm badge-ghost">${count}</span>
               </span>
             `
           },
+            showMoreText({ isShowingMore }, { html }) {
+            return html`${isShowingMore ? 'Mostrar menos' : 'Mostrar mais'}`;
+            },
         },
         showMore: true,
         limit: 10,
@@ -133,23 +140,28 @@ export default class extends Controller {
         sortBy: ["name:asc"],
         cssClasses: {
           root: "w-full",
-          list: "menu menu-sm bg-slate-100 rounded-box p-2 mt-1",
-          item: "rounded",
-          selectedItem: "font-semibold",
-          label: "flex justify-between w-full cursor-pointer",
+          list: "text-normal text-gray-600  rounded-box p-2 ",
+          item: "rounded ",
+          selectedItem: "font-semibold ",
+          label: "flex text-xl justify-between cursor-pointer",
           checkbox: "hidden",
-          count: "badge badge-sm badge-ghost ml-auto",
-          showMore: "btn btn-xs btn-ghost mt-1 w-full",
+          count: " ml-auto",
+          showMore: "btn btn-wide btn-sm  my-1 w-full [&.ais-RefinementList-showMore--disabled]:bg-gray-200 [&.ais-RefinementList-showMore--disabled]:text-gray-500 [&.ais-RefinementList-showMore--disabled]:cursor-not-allowed",
         },
         templates: {
           item({ label, count, isRefined }, { html }) {
             return html`
-              <span class="flex justify-between w-full ${isRefined ? "font-semibold text-secondary" : ""}">
-                <span>${label}</span>
-                <span class="badge badge-sm badge-ghost">${count}</span>
+              <span class="flex  justify-between w-full ${isRefined ? "font-semibold text-info" : ""}">
+                <span class="flex items-center gap-2 py-1 cursor-pointer">
+                  <input type="checkbox" checked="${isRefined ? "checked" : ""}" class="checkbox checkbox-info" /> ${label}
+                </span>
+                <span class="badge">${count}</span>
               </span>
             `
           },
+          showMoreText({ isShowingMore }, { html }) {
+            return html`${isShowingMore ? 'Mostrar menos' : 'Mostrar mais'}`;
+            },
         },
         showMore: true,
         limit: 15,
@@ -159,12 +171,12 @@ export default class extends Controller {
       clearRefinements({
         container: "#ais-clear-refinements",
         cssClasses: {
-          button: "btn btn-xs btn-ghost text-gray-500 w-full mt-2",
+          button: " w-full mt-2",
           disabledButton: "hidden",
         },
         templates: {
           resetLabel({ hasRefinements }, { html }) {
-            return html`<span>Limpar filtros</span>`
+            return html`<span class="btn btn-outline btn-primary w-full" >Limpar filtros</span>`
           },
         },
       }),
@@ -184,7 +196,13 @@ export default class extends Controller {
             return html`
               <div class="group card bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 w-full overflow-hidden">
                 <div class="card-body p-4">
-                  ${tags.length > 0 ? html`
+
+                  <div class="prose prose-xl max-w-none text-gray-800 leading-tight">
+                    ${components.Highlight({ hit, attribute: "content" })}
+                  </div>
+
+                  <div class="mt-4 pt-2 border-t border-gray-30 flex-wrap flex items-center justify-between group-hover:opacity-80 transition-opacity duration-200">
+                    ${tags.length > 0 ? html`
                     <div class="flex flex-wrap gap-1 mb-2">
                       ${tags.map(tag => html`
                         <button
@@ -196,21 +214,15 @@ export default class extends Controller {
                               input.dispatchEvent(new Event("input", { bubbles: true }))
                             }
                           }}
-                          class="badge badge-ghost badge-xs text-[10px] uppercase px-1.5 py-2 hover:bg-slate-800 hover:text-white transition duration-300 cursor-pointer border-0"
+                          class="btn btn-outline btn-sm btn-primary  hover:bg-slate-800 hover:text-white transition duration-300 cursor-pointer"
                         >${tag}</button>
                       `)}
                     </div>
                   ` : ""}
 
-                  <div class="prose prose-base max-w-none text-gray-800 leading-tight">
-                    ${components.Highlight({ hit, attribute: "content" })}
-                  </div>
-
-                  <div class="mt-4 pt-2 border-t border-gray-50 flex items-center justify-between group-hover:opacity-80 transition-opacity duration-200">
-                    <span class="badge badge-ghost badge-xs opacity-50">${hit.status || ""}</span>
                     <div class="flex gap-1">
-                      <a href="${editUrl}" data-turbo-frame="modal" class="btn btn-ghost btn-xs text-primary px-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+                      <a href="${editUrl}" data-turbo-frame="modal" class="btn btn-ghost btn-sm text-primary px-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                         </svg>
                       </a>
@@ -235,11 +247,11 @@ export default class extends Controller {
         padding: 2,
         cssClasses: {
           root: "join flex justify-center my-6",
-          list: "flex gap-1",
-          item: "",
-          link: "join-item btn btn-sm",
-          selectedItem: "join-item btn btn-sm btn-neutral",
-          disabledItem: "join-item btn btn-sm btn-disabled opacity-40",
+          list: "flex",
+          item: "join-item btn",
+          link: "join-item",
+          selectedItem: "join-item btn-active",
+          disabledItem: "join-item",
           previousPageItem: "",
           nextPageItem: "",
         },

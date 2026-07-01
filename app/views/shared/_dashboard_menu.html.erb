@@ -2,38 +2,19 @@
 
 
 
-  <div class=" px-4 py-4 flex-1 justify-between items-center">
+  <div class="px-4 py-4  w-1/5 justify-between items-center">
     <%= link_to root_path do %>
       <img src="https://res.cloudinary.com/djkz8rzky/images/f_auto,q_auto/v1751482679/logo-branco-funco-azul-1_mq3ej0/logo-branco-funco-azul-1_mq3ej0.png?_i=AA" alt="Logo" class="w-72 mr-2">
     <% end %>
+
   </div>
   <% if user_signed_in? %>
-    <%# <div class="w-1/4">
-            <label class="input input-md w-92">
-            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <g
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-width="2.5"
-        fill="none"
-        stroke="currentColor"
-        >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.3-4.3"></path>
-            </g>
-          </svg>
-          <input type="search" required placeholder="Search" />
-        </label>
-      </div> %>
-    <div class="flex-2">
-      <ul class="menu menu-horizontal px-1 font-medium text-base transition duration-300">
-          <li><%= render "shared/search_note", class: '' %></li>
-      
-        
-      </ul>
+    <div class="flex-1 items-center justify-center hidden md:flex mt-2">
+         <%= render "shared/search_note" %>
     </div>
+    
     <ul class="menu flex items-center menu-horizontal px-1 font-medium text-base transition duration-300">
-       
+
         <li><%= link_to new_note_path, class: 'flex items-center' do %>
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
