@@ -1,4 +1,4 @@
 class Subcategory < ApplicationRecord
-    belongs_to :category, dependent: :destroy
-    has_many :notes, dependent: :destroy
+  has_many :notes, dependent: :delete_all # ou :destroy se precisar callbacks em Note
+  belongs_to :category
 end

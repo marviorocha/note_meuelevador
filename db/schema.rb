@@ -335,6 +335,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_02_025115) do
   add_foreign_key "note_tags", "notes"
   add_foreign_key "note_tags", "tags"
   add_foreign_key "notes", "authors"
-  add_foreign_key "notes", "subcategories"
+  add_foreign_key "notes", "subcategories", on_delete: :cascade
   add_foreign_key "subcategories", "categories"
 end

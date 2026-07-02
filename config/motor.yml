@@ -1,6 +1,6 @@
 ---
 engine_version: 0.5.0
-file_version: 2026-07-02 03:45:25.462398000 Z
+file_version: 2026-07-02 04:02:07.739329000 Z
 resources:
 - name: active_admin/comment
   preferences:
@@ -88,9 +88,11 @@ resources:
 configs:
 - key: header.links
   value:
-  - name: "⭐ Star on GitHub"
-    path: https://github.com/motor-admin/motor-admin-rails
-  updated_at: 2026-07-02 02:51:47.793590000 +00:00
+  - name: Forms
+    link_type: forms
+  - name: Relatório
+    link_type: reports
+  updated_at: 2026-07-02 04:02:07.739329000 +00:00
 - key: resources.user.columns.order
   value:
   - id

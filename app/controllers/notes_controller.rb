@@ -16,7 +16,7 @@ class NotesController < ApplicationController
 
     def create
         @note = Note.new(note_params)
-        @note.tag_names = params[:tag_names] if params[:tag_names].present?
+        @note.tag_ids = params[:tag_ids] if params[:tag_ids].present?
 
         if @note.save
             redirect_to notes_path, notice: "Nota criada com sucesso."
