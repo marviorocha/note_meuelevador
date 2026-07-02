@@ -1,6 +1,6 @@
 class InstallMotorAdmin < ActiveRecord::Migration[8.0]
   def self.up
-    create_table :motor_queries do |t|
+    create_table :motor_queries, if_not_exists: true do |t|
       t.column :name, :string, null: false
       t.column :description, :text
       t.column :sql_body, :text, null: false
@@ -11,14 +11,15 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
 
       t.timestamps
 
-      t.index :updated_at
+      t.index :updated_at, if_not_exists: true
       t.index 'name',
               name: 'motor_queries_name_unique_index',
               unique: true,
-              where: 'deleted_at IS NULL'
+              where: 'deleted_at IS NULL',
+              if_not_exists: true
     end
 
-    create_table :motor_dashboards do |t|
+    create_table :motor_dashboards, if_not_exists: true do |t|
       t.column :title, :string, null: false
       t.column :description, :text
       t.column :preferences, :text, null: false
@@ -28,14 +29,15 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
 
       t.timestamps
 
-      t.index :updated_at
+      t.index :updated_at, if_not_exists: true
       t.index 'title',
               name: 'motor_dashboards_title_unique_index',
               unique: true,
-              where: 'deleted_at IS NULL'
+              where: 'deleted_at IS NULL',
+              if_not_exists: true
     end
 
-    create_table :motor_forms do |t|
+    create_table :motor_forms, if_not_exists: true do |t|
       t.column :name, :string, null: false
       t.column :description, :text
       t.column :api_path, :text, null: false
@@ -48,32 +50,33 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
 
       t.timestamps
 
-      t.index :updated_at
+      t.index :updated_at, if_not_exists: true
       t.index 'name',
               name: 'motor_forms_name_unique_index',
               unique: true,
-              where: 'deleted_at IS NULL'
+              where: 'deleted_at IS NULL',
+              if_not_exists: true
     end
 
-    create_table :motor_resources do |t|
+    create_table :motor_resources, if_not_exists: true do |t|
       t.column :name, :string, null: false, index: { unique: true }
       t.column :preferences, :text, null: false
 
       t.timestamps
 
-      t.index :updated_at
+      t.index :updated_at, if_not_exists: true
     end
 
-    create_table :motor_configs do |t|
+    create_table :motor_configs, if_not_exists: true do |t|
       t.column :key, :string, null: false, index: { unique: true }
       t.column :value, :text, null: false
 
       t.timestamps
 
-      t.index :updated_at
+      t.index :updated_at, if_not_exists: true
     end
 
-    create_table :motor_alerts do |t|
+    create_table :motor_alerts, if_not_exists: true do |t|
       t.references :query, null: false, foreign_key: { to_table: :motor_queries }, index: true
       t.column :name, :string, null: false
       t.column :description, :text
@@ -86,14 +89,15 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
 
       t.timestamps
 
-      t.index :updated_at
+      t.index :updated_at, if_not_exists: true
       t.index 'name',
               name: 'motor_alerts_name_unique_index',
               unique: true,
-              where: 'deleted_at IS NULL'
+              where: 'deleted_at IS NULL',
+              if_not_exists: true
     end
 
-    create_table :motor_alert_locks do |t|
+    create_table :motor_alert_locks, if_not_exists: true do |t|
       t.references :alert, null: false, foreign_key: { to_table: :motor_alerts }
       t.column :lock_timestamp, :string, null: false
 
@@ -102,7 +106,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
       t.index %i[alert_id lock_timestamp], unique: true
     end
 
-    create_table :motor_tags do |t|
+    create_table :motor_tags, if_not_exists: true do |t|
       t.column :name, :string, null: false
 
       t.timestamps
@@ -112,7 +116,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
               unique: true
     end
 
-    create_table :motor_taggable_tags do |t|
+    create_table :motor_taggable_tags, if_not_exists: true do |t|
       t.references :tag, null: false, foreign_key: { to_table: :motor_tags }, index: true
       t.column :taggable_id, :bigint, null: false
       t.column :taggable_type, :string, null: false
@@ -122,7 +126,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
               unique: true
     end
 
-    create_table :motor_audits do |t|
+    create_table :motor_audits, if_not_exists: true do |t|
       t.column :auditable_id, :string
       t.column :auditable_type, :string
       t.column :associated_id, :string
@@ -139,7 +143,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
       t.column :created_at, :datetime
     end
 
-    create_table :motor_api_configs do |t|
+    create_table :motor_api_configs, if_not_exists: true do |t|
       t.column :name, :string, null: false
       t.column :url, :string, null: false
       t.column :preferences, :text, null: false
@@ -155,7 +159,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
         where: 'deleted_at IS NULL'
     end
 
-    create_table :motor_notes do |t|
+    create_table :motor_notes, if_not_exists: true do |t|
       t.column :body, :text
       t.column :author_id, :bigint
       t.column :author_type, :string
@@ -172,7 +176,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
               name: 'motor_notes_author_id_author_type_index'
     end
 
-    create_table :motor_note_tags do |t|
+    create_table :motor_note_tags, if_not_exists: true do |t|
       t.column :name, :string, null: false
 
       t.timestamps
@@ -182,7 +186,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
               unique: true
     end
 
-    create_table :motor_note_tag_tags do |t|
+    create_table :motor_note_tag_tags, if_not_exists: true do |t|
       t.references :tag, null: false, foreign_key: { to_table: :motor_note_tags }, index: true
       t.references :note, null: false, foreign_key: { to_table: :motor_notes }, index: false
 
@@ -191,7 +195,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
               unique: true
     end
 
-    create_table :motor_reminders do |t|
+    create_table :motor_reminders, if_not_exists: true do |t|
       t.column :author_id, :bigint, null: false
       t.column :author_type, :string, null: false
       t.column :recipient_id, :bigint, null: false
@@ -212,7 +216,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
               name: 'motor_reminders_record_id_record_type_index'
     end
 
-    create_table :motor_notifications do |t|
+    create_table :motor_notifications, if_not_exists: true do |t|
       t.column :title, :string, null: false
       t.column :description, :text
       t.column :recipient_id, :bigint, null: false
@@ -230,24 +234,34 @@ class InstallMotorAdmin < ActiveRecord::Migration[8.0]
               name: 'motor_notifications_record_id_record_type_index'
     end
 
-    add_index :motor_audits, %i[auditable_type auditable_id version], name: 'motor_auditable_index'
-    add_index :motor_audits, %i[associated_type associated_id], name: 'motor_auditable_associated_index'
-    add_index :motor_audits, %i[user_id user_type], name: 'motor_auditable_user_index'
-    add_index :motor_audits, :request_uuid
-    add_index :motor_audits, :created_at
+    add_index :motor_audits, %i[auditable_type auditable_id version],
+              name: 'motor_auditable_index',
+              if_not_exists: true
+    add_index :motor_audits, %i[associated_type associated_id],
+              name: 'motor_auditable_associated_index',
+              if_not_exists: true
+    add_index :motor_audits, %i[user_id user_type],
+              name: 'motor_auditable_user_index',
+              if_not_exists: true
+    add_index :motor_audits, :request_uuid, if_not_exists: true
+    add_index :motor_audits, :created_at, if_not_exists: true
 
     model = Class.new(ApplicationRecord)
 
     model.table_name = 'motor_configs'
-
-    model.create!(key: 'header.links', value: [{
-      name: '⭐ Star on GitHub',
-      path: 'https://github.com/motor-admin/motor-admin-rails'
-    }].to_json)
+    model.find_or_create_by!(key: 'header.links') do |record|
+      record.value = [ {
+        name: '⭐ Star on GitHub',
+        path: 'https://github.com/motor-admin/motor-admin-rails'
+      } ].to_json
+    end
 
     model.table_name = 'motor_api_configs'
-
-    model.create!(name: 'origin', url: '/', preferences: {}, credentials: {})
+    model.find_or_create_by!(name: 'origin') do |record|
+      record.url = '/'
+      record.preferences = {}
+      record.credentials = {}
+    end
   end
 
   def self.down
