@@ -1,0 +1,118 @@
+---
+engine_version: 0.5.0
+file_version: 2026-07-02 03:45:25.462398000 Z
+resources:
+- name: active_admin/comment
+  preferences:
+    visible: false
+  updated_at: 2026-07-02 03:01:19.069832000 +00:00
+- name: category
+  preferences:
+    columns:
+    - display_name: Nome
+      name: name
+    - display_name: 'Criado em:'
+      name: updated_at
+    - display_name: 'Atualizado em:'
+      name: created_at
+    preferences:
+      display_as: kanban
+      kanban_card_columns:
+      - name
+      - updated_at
+    display_name: Categoria
+    associations:
+    - display_name: Subcategorias
+      name: subcategories
+  updated_at: 2026-07-02 03:45:25.462398000 +00:00
+- name: note
+  preferences:
+    columns:
+    - display_name: Autor
+      reference:
+        name: author
+        display_name: Author
+        model_name: author
+        reference_type: belongs_to
+        foreign_key: author_id
+        primary_key: id
+        options: {}
+        polymorphic:
+        virtual: false
+      name: author_id
+    - display_name: Subcategoria
+      reference:
+        name: subcategory
+        display_name: Subcategory
+        model_name: subcategory
+        reference_type: belongs_to
+        foreign_key: subcategory_id
+        primary_key: id
+        options: {}
+        polymorphic:
+        virtual: false
+      name: subcategory_id
+    - display_name: Conteúdo
+      name: content
+    - display_name: Nova?
+      name: is_new
+    - access_type: hidden
+      name: updated_at
+    - access_type: hidden
+      name: created_at
+  updated_at: 2026-07-02 03:09:56.548415000 +00:00
+- name: note_tag
+  preferences:
+    icon: tag
+  updated_at: 2026-07-02 03:01:30.194404000 +00:00
+- name: user
+  preferences:
+    columns:
+    - display_name: Nome
+      name: first_name
+    - display_name: Sobrenome
+      name: last_name
+    - name: password
+      display_name: Senha
+      column_type: string
+      access_type: write_only
+      virtual: true
+      validators: []
+    - access_type: hidden
+      name: updated_at
+    - access_type: hidden
+      name: created_at
+    - access_type: hidden
+      name: reset_password_sent_at
+  updated_at: 2026-07-02 02:55:31.146380000 +00:00
+configs:
+- key: header.links
+  value:
+  - name: "⭐ Star on GitHub"
+    path: https://github.com/motor-admin/motor-admin-rails
+  updated_at: 2026-07-02 02:51:47.793590000 +00:00
+- key: resources.user.columns.order
+  value:
+  - id
+  - first_name
+  - last_name
+  - email
+  - password
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - updated_at
+  - created_at
+  updated_at: 2026-07-02 02:56:11.496642000 +00:00
+queries: []
+dashboards: []
+forms: []
+alerts: []
+api_configs:
+- id: 1
+  name: origin
+  url: "/"
+  preferences: {}
+  description:
+  updated_at: 2026-07-02 02:51:47.839837000 +00:00
