@@ -1,6 +1,6 @@
 ---
 engine_version: 0.5.0
-file_version: 2026-07-02 04:02:07.739329000 Z
+file_version: 2026-07-02 16:03:40.634210000 Z
 resources:
 - name: active_admin/comment
   preferences:
@@ -22,7 +22,7 @@ resources:
       - updated_at
     display_name: Categoria
     associations:
-    - display_name: Subcategorias
+    - display_name: Sub Categorias
       name: subcategories
   updated_at: 2026-07-02 03:45:25.462398000 +00:00
 - name: note
@@ -40,7 +40,7 @@ resources:
         polymorphic:
         virtual: false
       name: author_id
-    - display_name: Subcategoria
+    - display_name: Sub Categoria
       reference:
         name: subcategory
         display_name: Subcategory
@@ -60,7 +60,16 @@ resources:
       name: updated_at
     - access_type: hidden
       name: created_at
-  updated_at: 2026-07-02 03:09:56.548415000 +00:00
+    scopes:
+    - visible: false
+      name: not_arquivado
+    - visible: false
+      name: not_ok
+    - visible: false
+      name: not_revisado_por_pablo
+    - visible: false
+      name: not_revisar
+  updated_at: 2026-07-02 16:03:23.154733000 +00:00
 - name: note_tag
   preferences:
     icon: tag
@@ -93,6 +102,13 @@ configs:
   - name: Relatório
     link_type: reports
   updated_at: 2026-07-02 04:02:07.739329000 +00:00
+- key: resources.note.scopes.order
+  value:
+  - arquivado
+  - ok
+  - revisado_por_pablo
+  - revisar
+  updated_at: 2026-07-02 16:03:40.634210000 +00:00
 - key: resources.user.columns.order
   value:
   - id

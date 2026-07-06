@@ -19,6 +19,10 @@ namespace :import do
         :ok
       when "Arquivado"
         :arquivado
+      when "Revisado por Pablo"
+        :revisado_por_pablo
+      when ""
+        :revisar
       else
         :revisar
       end
