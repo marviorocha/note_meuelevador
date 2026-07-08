@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_02_025115) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_08_181832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -78,6 +78,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_02_025115) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower((name)::text)", name: "index_categories_on_lower_name", unique: true
   end
 
   create_table "motor_alert_locks", force: :cascade do |t|
@@ -301,6 +302,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_02_025115) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower((name)::text), category_id", name: "index_subcategories_on_lower_name_and_category_id", unique: true
     t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 

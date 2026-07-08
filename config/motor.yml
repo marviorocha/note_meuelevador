@@ -1,6 +1,6 @@
 ---
 engine_version: 0.5.0
-file_version: 2026-07-02 16:03:40.634210000 Z
+file_version: 2026-07-08 20:52:42.163234000 Z
 resources:
 - name: active_admin/comment
   preferences:
@@ -24,7 +24,8 @@ resources:
     associations:
     - display_name: Sub Categorias
       name: subcategories
-  updated_at: 2026-07-02 03:45:25.462398000 +00:00
+    icon: tournament
+  updated_at: 2026-07-08 18:36:26.385116000 +00:00
 - name: note
   preferences:
     columns:
@@ -39,6 +40,7 @@ resources:
         options: {}
         polymorphic:
         virtual: false
+      access_type: hidden
       name: author_id
     - display_name: Sub Categoria
       reference:
@@ -55,11 +57,14 @@ resources:
     - display_name: Conteúdo
       name: content
     - display_name: Nova?
+      access_type: hidden
       name: is_new
     - access_type: hidden
       name: updated_at
     - access_type: hidden
       name: created_at
+    - access_type: hidden
+      name: characters
     scopes:
     - visible: false
       name: not_arquivado
@@ -69,11 +74,23 @@ resources:
       name: not_revisado_por_pablo
     - visible: false
       name: not_revisar
-  updated_at: 2026-07-02 16:03:23.154733000 +00:00
+  updated_at: 2026-07-08 19:31:27.731821000 +00:00
 - name: note_tag
   preferences:
     icon: tag
   updated_at: 2026-07-02 03:01:30.194404000 +00:00
+- name: subcategory
+  preferences:
+    icon: subtask
+    associations:
+    - visible: false
+      name: notes
+    display_name: Sub Categoria
+  updated_at: 2026-07-08 20:52:42.163234000 +00:00
+- name: tag
+  preferences:
+    visible: false
+  updated_at: 2026-07-08 20:44:00.173730000 +00:00
 - name: user
   preferences:
     columns:
@@ -105,10 +122,26 @@ configs:
 - key: resources.note.scopes.order
   value:
   - arquivado
+  - not_arquivado
+  - not_ok
+  - not_revisado_por_pablo
   - ok
   - revisado_por_pablo
   - revisar
+  - not_revisar
   updated_at: 2026-07-02 16:03:40.634210000 +00:00
+- key: resources.order
+  value:
+  - active_storage/attachment
+  - author
+  - category
+  - subcategory
+  - active_admin/comment
+  - note
+  - tag
+  - note_tag
+  - user
+  updated_at: 2026-07-08 20:43:57.777726000 +00:00
 - key: resources.user.columns.order
   value:
   - id

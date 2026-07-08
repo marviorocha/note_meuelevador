@@ -1,14 +1,16 @@
 require "csv"
 
 namespace :import do
-  desc "Importa dados do db/dados_notas.csv para a tabela notes"
+  desc "Importa notas do db/dados_notas.csv para a tabela notes (requer categorias já importadas)"
   task notes: :environment do
     file_path = Rails.root.join("db", "dados_notas.csv")
     puts "Importando notas de #{file_path}..."
 
     CSV.foreach(file_path, headers: true) do |row|
-      author = Author.find_or_create_by!(name: row["Author"])
-      cat = Category.find_or_create_by!(name: row["categoria"])
+      author = Author.find_or_create_by!(name: row["Author"].to_s.strip)
+      cat_name = row["categoria"].to_s.strip
+      cat = Category.where("LOWER(name) = ?", cat_name.downcase).first!
+
 
       status_text = row["status"]
 
@@ -27,12 +29,12 @@ namespace :import do
         :revisar
       end
 
-      sub = Subcategory.find_or_create_by!(name: row["subcategoria"], category: cat)
+      sub_name = row["subcategoria"].to_s.strip
+      sub = Subcategory.where("LOWER(name) = ? AND category_id = ?", sub_name.downcase, cat.id).first!
       tag_names = row["tags"].to_s.split(",").map(&:strip)
       tags = tag_names.map { |t| Tag.find_or_create_by!(name: t) }
 
       note = Note.create!(
-
         subcategory: sub,
         author: author,
         status: status,
