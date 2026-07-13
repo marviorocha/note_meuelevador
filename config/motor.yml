@@ -1,6 +1,6 @@
 ---
 engine_version: 0.5.0
-file_version: 2026-07-08 20:52:42.163234000 Z
+file_version: 2026-07-08 22:00:11.670946000 Z
 resources:
 - name: active_admin/comment
   preferences:
@@ -25,7 +25,8 @@ resources:
     - display_name: Sub Categorias
       name: subcategories
     icon: tournament
-  updated_at: 2026-07-08 18:36:26.385116000 +00:00
+    display_primary_key: false
+  updated_at: 2026-07-08 22:00:11.670946000 +00:00
 - name: note
   preferences:
     columns:
