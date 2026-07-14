@@ -3,8 +3,7 @@ import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter"
 import instantsearch from "instantsearch.js"
 import {
   searchBox,
-  hits,
-  pagination,
+  infiniteHits,
   refinementList,
   clearRefinements,
   currentRefinements,
@@ -184,12 +183,14 @@ export default class extends Controller {
         },
       }),
 
-      hits({
+      infiniteHits({
         container: "#ais-hits",
         cssClasses: {
           root: "w-full",
           list: "columns-1 md:columns-2 lg:columns-3 gap-4",
           item: "break-inside-avoid mb-4 block p-0 border-0 shadow-none",
+          loadMore: "btn btn-wide mx-auto mt-6 flex",
+          disabledLoadMore: "hidden",
         },
         templates: {
           item(hit, { html, components }) {
@@ -242,34 +243,8 @@ export default class extends Controller {
               </div>
             `
           },
-        },
-      }),
-
-      pagination({
-        container: "#ais-pagination",
-        padding: 2,
-        cssClasses: {
-          root: "join flex justify-center my-6",
-          list: "flex",
-          item: "join-item btn",
-          link: "join-item",
-          selectedItem: "join-item btn-active",
-          disabledItem: "join-item",
-          previousPageItem: "",
-          nextPageItem: "",
-        },
-        templates: {
-          previous({ cssClasses }, { html }) {
-            return html`← Anterior`
-          },
-          next({ cssClasses }, { html }) {
-            return html`Próxima →`
-          },
-          first({ cssClasses }, { html }) {
-            return html`«`
-          },
-          last({ cssClasses }, { html }) {
-            return html`»`
+          showMoreLabel({ html }) {
+            return html`<span class="loading loading-spinner loading-sm"></span> Carregando mais...`
           },
         },
       }),
@@ -277,11 +252,37 @@ export default class extends Controller {
 
     search.start()
     this.search = search
+
+    // Scroll infinito: observa o botão "carregar mais" do infiniteHits
+    // e clica nele automaticamente quando entra na viewport
+    this._observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.click()
+          }
+        })
+      },
+      { rootMargin: "400px" } // começa a carregar um pouco antes de chegar no fim
+    )
+
+    search.on("render", () => {
+      const loadMoreBtn = this.element.querySelector(
+        "#ais-hits .ais-InfiniteHits-loadMore"
+      )
+      if (loadMoreBtn && !loadMoreBtn.disabled) {
+        this._observer.disconnect()
+        this._observer.observe(loadMoreBtn)
+      }
+    })
   }
 
   disconnect() {
     if (this.search) {
       this.search.dispose()
+    }
+    if (this._observer) {
+      this._observer.disconnect()
     }
   }
 }
