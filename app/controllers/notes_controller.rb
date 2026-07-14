@@ -16,7 +16,7 @@ class NotesController < ApplicationController
 
     def create
         @note = Note.new(note_params)
-        @note.tag_ids = params[:tag_ids] if params[:tag_ids].present?
+        associate_new_subcategory!
 
         if @note.save
             redirect_to notes_path, notice: "Nota criada com sucesso."
@@ -32,20 +32,13 @@ class NotesController < ApplicationController
     end
 
     def update
-        if @note.update(note_params)
-            if params[:tag_names].present?
-                @note.tags = params[:tag_names].split(",").map(&:strip).reject(&:blank?).map do |name|
-                    Tag.find_or_create_by(name: name)
-                end
-            end
-            respond_to do |format|
-                format.html { redirect_to notes_path, notice: "Nota atualizada com sucesso." }
-                format.turbo_stream
-            end
+        @note = Note.find(params[:id])
+        @note.assign_attributes(note_params)
+        associate_new_subcategory!
+
+        if @note.save
+            redirect_to notes_path, notice: "Nota atualizada com sucesso."
         else
-            @authors = Author.all
-            @categories = Category.all
-            @subcategories = Subcategory.all
             render :edit, status: :unprocessable_entity
         end
     end
@@ -74,6 +67,21 @@ class NotesController < ApplicationController
     end
 
     def note_params
-        params.expect(note: [ :author_id, :subcategory_id, :status, :content, :characters, :is_new ])
+        params.expect(note: [ :author_id, :category_id, :subcategory_id, :status, :content, :characters, :is_new ])
+    end
+
+    def associate_new_subcategory!
+      category_id = params[:category_id].presence || @note.subcategory&.category_id
+      new_subcategory_name = params[:new_subcategory_name].presence
+
+      return if new_subcategory_name.blank?
+      return if category_id.blank?
+
+      @note.subcategory = Subcategory.find_or_initialize_by(
+        name: new_subcategory_name,
+        category_id: category_id
+      )
+
+      @note.subcategory.save! if @note.subcategory.new_record?
     end
 end
