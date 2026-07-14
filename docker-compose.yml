@@ -1,5 +1,5 @@
 # docker-compose.yml
-version: "3.8" # Specify the Docker Compose file format version
+version: "3.8"
 
 services:
   # Service for the PostgreSQL database
@@ -8,19 +8,37 @@ services:
       context: .
       dockerfile: db.Dockerfile
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Mount a named volume for persistent data
+      - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: rails_user # Database user
-      POSTGRES_PASSWORD: password # Database password (change in production!)
+      POSTGRES_USER: rails_user
+      POSTGRES_PASSWORD: password
     ports:
-      - "5432:5432" # Expose PostgreSQL port to the host (optional, but useful for direct access)
-    healthcheck: # Health check to ensure the database is ready before the app starts
+      - "5432:5432"
+    healthcheck:
       test: ["CMD-SHELL", "pg_isready -U rails_user -d myapp_development"]
       interval: 5s
       timeout: 5s
       retries: 5
 
-# Define named volumes for data persistence and gem caching
+  # Service for Typesense search engine
+  typesense:
+    image: typesense/typesense:31.0.rc10
+    volumes:
+      - typesense_data:/data
+    environment:
+      TYPESENSE_API_KEY: "Ksjdh98238djJHhds82HSDjhj2"
+      TYPESENSE_DATA_DIR: "/data"
+      TYPESENSE_LISTEN_PORT: "8108"
+      TYPESENSE_ENABLE_CORS: "true"
+    ports:
+      - "8108:8108"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sSf http://localhost:8108/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 volumes:
-  postgres_data: # Volume for PostgreSQL data
-  bundle_cache: # Volume for Ruby gems
+  postgres_data:
+  typesense_data:
+  bundle_cache:

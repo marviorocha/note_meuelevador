@@ -7,8 +7,8 @@
      data-controller="typesense"
      data-typesense-host-value="<%= typesense_host %>"
      data-typesense-api-key-value="<%= typesense_key %>"
-     data-typesense-protocol-value="https"
-     data-typesense-port-value="443">
+     data-typesense-protocol-value="<%= Rails.env.development? ? "http" : "https" %>"
+     data-typesense-port-value="<%= Rails.env.development? ? 8108 : 443 %>">
 
   <div class="mx-auto">
     <div class="flex gap-6">

@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :author
   belongs_to :subcategory
-  has_many :note_tags
+  has_many :note_tags, dependent: :destroy
   has_many :tags, through: :note_tags
 
   enum :status, { revisar: 0, ok: 1, arquivado: 2, revisado_por_pablo: 3 }

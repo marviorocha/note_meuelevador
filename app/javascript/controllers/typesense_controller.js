@@ -18,7 +18,7 @@ export default class extends Controller {
     host: String,
     apiKey: String,
     protocol: { type: String, default: "https" },
-    port: { type: Number, default: 443 },
+    port: { type: Number, default: 8108 },
   }
 
   connect() {

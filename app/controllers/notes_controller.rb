@@ -15,8 +15,14 @@ class NotesController < ApplicationController
     end
 
     def create
-        @note = Note.new(note_params)
-        @note.tag_names = params[:tag_names] if params[:tag_names].present?
+     @note = Note.new(note_params)
+
+        if params[:tag_names].present?
+            @note.tags = params[:tag_names].split(",").map(&:strip).reject(&:blank?).map do |name|
+                Tag.find_or_create_by(name: name)
+            end
+        end
+
         associate_new_subcategory!
 
         if @note.save
@@ -41,11 +47,11 @@ class NotesController < ApplicationController
                     Tag.find_or_create_by(name: name)
                 end
          end
-        if @note.save
+         if @note.save
             redirect_to notes_path, notice: "Nota atualizada com sucesso."
-        else
+         else
             render :edit, status: :unprocessable_entity
-        end
+         end
     end
 
     def destroy
@@ -72,7 +78,7 @@ class NotesController < ApplicationController
     end
 
     def note_params
-        params.expect(note: [ :author_id, :category_id, :subcategory_id, :status, :content, :characters, :is_new ])
+        params.expect(note: [ :author_id, :subcategory_id, :status, :content, :characters, :is_new ])
     end
 
     def associate_new_subcategory!
