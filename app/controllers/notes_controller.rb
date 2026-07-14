@@ -16,6 +16,7 @@ class NotesController < ApplicationController
 
     def create
         @note = Note.new(note_params)
+        @note.tag_names = params[:tag_names] if params[:tag_names].present?
         associate_new_subcategory!
 
         if @note.save
@@ -35,7 +36,11 @@ class NotesController < ApplicationController
         @note = Note.find(params[:id])
         @note.assign_attributes(note_params)
         associate_new_subcategory!
-
+         if params[:tag_names].present?
+                @note.tags = params[:tag_names].split(",").map(&:strip).reject(&:blank?).map do |name|
+                    Tag.find_or_create_by(name: name)
+                end
+         end
         if @note.save
             redirect_to notes_path, notice: "Nota atualizada com sucesso."
         else
