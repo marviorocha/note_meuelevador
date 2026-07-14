@@ -54,9 +54,10 @@
 <div>
   <%= label_tag :new_subcategory_name, "Ou criar nova subcategoria", class: "block text-sm font-medium text-gray-700" %>
   <%= text_field_tag :new_subcategory_name,
-        autocomplete: "off",
+
         params[:new_subcategory_name],
         placeholder: "Digite o nome da nova subcategoria",
+        autocomplete: "off",
         class: "mt-1 block w-full rounded-md border-gray-300 input shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" %>
 </div>
 
