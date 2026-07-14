@@ -129,7 +129,7 @@ export default class extends Controller {
             },
         },
         showMore: true,
-        limit: 10,
+        limit: 15,
         showMoreLimit: 50,
       }),
 
@@ -163,7 +163,7 @@ export default class extends Controller {
             },
         },
         showMore: true,
-        limit: 15,
+        limit: 10,
         showMoreLimit: 100,
       }),
 
