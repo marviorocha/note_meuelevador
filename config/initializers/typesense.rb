@@ -5,7 +5,7 @@ TYPESENSE_CLIENT = Typesense::Client.new(
   nodes: [
     {
       host: ENV.fetch("TYPESENSE_HOST"),
-      port: 8108,
+      port: Rails.env.development? ? 8108 : 443,
       protocol: Rails.env.development? ? "http" : "https"
     }
   ],
