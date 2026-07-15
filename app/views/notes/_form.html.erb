@@ -1,89 +1,91 @@
-<%= form_with(model: note, class: "space-y-4") do |f| %>
-  <% if note.errors.any? %>
-    <div class="bg-red-50 text-red-700 p-4 rounded-md">
-      <h2 class="font-bold"><%= pluralize(note.errors.count, "erro") %> impediram esta nota de ser salva:</h2>
-      <ul class="list-disc ml-5">
-        <% note.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+<div data-controller="keyboard-shortcuts">
+
+
+<%= form_with(model: note, class: "space-y-4", data: { keyboard_shortcuts_target: "form" }) do |f| %>
+    <% if note.errors.any? %>
+        <div class="bg-red-50 text-red-700 p-4 rounded-md">
+            <h2 class="font-bold"><%= pluralize(note.errors.count, "erro") %>                impediram esta nota de ser salva:</h2>                <ul class="list-disc ml-5">                    <% note.errors.full_messages.each do |msg| %><li><%= msg %></li>                    <% end %></ul>            </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
- <div class="grid grid-cols-2 gap-4">
-   <div class="hidden">
-  <%= f.label :author_id, "Autor", class: "block text-sm font-medium text-gray-700" %>
-  <%= f.collection_select :author_id, Author.all, :id, :name,
-        { selected: (note.author_id.presence || Author.find_by(name: "Romulo")&.id) },
-        { class: "mt-1 block w-full select rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" } %>
- <div>
-      <%= f.label :status, "Status", class: "block text-sm font-medium text-gray-700" %>
-      <%= f.select :status, Note.statuses.keys.map { |s| [s.titleize, s] }, {}, { class: "mt-1 select block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" } %>
-    </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="hidden">
+                <%= f.label :author_id, "Autor", class: "block text-sm font-medium text-gray-700" %>
+                <%= f.collection_select :author_id, Author.all, :id, :name,
+                    { selected: (note.author_id.presence || Author.find_by(name: "Romulo")&.id) },
+                    { class: "mt-1 block w-full select rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" } %>
+                <div>
+                    <%= f.label :status, "Status", class: "block text-sm font-medium text-gray-700" %>
+                    <%= f.select :status, Note.statuses.keys.map { |s| [s.titleize, s] }, {}, { class: "mt-1 select block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" } %>
+                    </div>
 
-</div>
+                </div>
 
-  </div>
+            </div>
 
-  <div>
-    <%= f.label :content, "Conteúdo", class: "block text-sm font-medium text-gray-700" %>
-    <%= f.text_area :content, rows: 15, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 textarea textarea-lg focus:ring-indigo-500 sm:text-sm border p-2" %>
-  </div>
+            <div>
+                <div class="flex between items-center justify-between">
+                    <%= f.label :content, "Conteúdo", class: "block text-sm font-medium text-gray-700" %>
 
+                    <a class="flex link items-center gap-2 text-sm text-gray-500" href="" ><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                    <path fill="#2196f3" d="M23.426,31.911l-1.719,3.936c-0.661,1.513-2.754,1.513-3.415,0l-1.719-3.936	c-1.529-3.503-4.282-6.291-7.716-7.815l-4.73-2.1c-1.504-0.668-1.504-2.855,0-3.523l4.583-2.034	c3.522-1.563,6.324-4.455,7.827-8.077l1.741-4.195c0.646-1.557,2.797-1.557,3.443,0l1.741,4.195	c1.503,3.622,4.305,6.514,7.827,8.077l4.583,2.034c1.504,0.668,1.504,2.855,0,3.523l-4.73,2.1	C27.708,25.62,24.955,28.409,23.426,31.911z"></path><path fill="#7e57c2" d="M38.423,43.248l-0.493,1.131c-0.361,0.828-1.507,0.828-1.868,0l-0.493-1.131	c-0.879-2.016-2.464-3.621-4.44-4.5l-1.52-0.675c-0.822-0.365-0.822-1.56,0-1.925l1.435-0.638c2.027-0.901,3.64-2.565,4.504-4.65	l0.507-1.222c0.353-0.852,1.531-0.852,1.884,0l0.507,1.222c0.864,2.085,2.477,3.749,4.504,4.65l1.435,0.638	c0.822,0.365,0.822,1.56,0,1.925l-1.52,0.675C40.887,39.627,39.303,41.232,38.423,43.248z"></path>
+                    </svg> Escrever Nota com IA</a>
 
-<div class="grid grid-cols-2 gap-4" data-controller="category-filter">
-  <div>
-    <%= label_tag :category_id, "Categoria", class: "block text-sm font-medium text-gray-700" %>
-    <%= select_tag :category_id,
-          options_from_collection_for_select(Category.all, :id, :name, note.subcategory&.category_id),
-          prompt: "Selecione a Categoria",
-          class: "mt-1 block w-full select rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2",
-          data: { category_filter_target: "category", action: "change->category-filter#filter" } %>
-  </div>
+                </div>
 
-  <div>
-    <div class="flex items-center justify-between">
-      <%= f.label :subcategory_id, "Subcategoria", class: "block text-sm font-medium text-gray-700" %>
-      <button type="button"
-              class="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
-              data-action="click->category-filter#toggleNewSubcategory">
-        + Nova subcategoria
-      </button>
-    </div>
+                <%= f.text_area :content, rows: 15, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 textarea textarea-lg focus:ring-indigo-500 sm:text-sm border p-2" %>
+            </div>
 
-    <%= f.select :subcategory_id,
-          Subcategory.all.map { |s| [s.name, s.id, { "data-category-id": s.category_id }] },
-          { prompt: "Selecione a Subcategoria" },
-          { class: "mt-1 block w-full select rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2",
-            data: { category_filter_target: "subcategory" } } %>
+            <div class="grid grid-cols-2 gap-4" data-controller="category-filter">
+                <div>
+                    <%= label_tag :category_id, "Categoria", class: "block text-sm font-medium text-gray-700" %>
+                    <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, note.subcategory &.category_id), prompt: "Selecione a Categoria", class: "mt-1 block w-full select rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2", data: { category_filter_target: "category", action: "change->category-filter#filter" } %>
+                    </div>
 
-    <div data-category-filter-target="newSubcategoryWrapper" class="hidden mt-2">
-      <%= label_tag :new_subcategory_name, "Ou criar nova subcategoria", class: "block text-sm font-medium text-gray-700 mb-1" %>
-      <%= text_field_tag :new_subcategory_name, nil,
-            placeholder: "Digite o nome da nova subcategoria",
-            class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2",
-            data: { category_filter_target: "newSubcategoryInput" } %>
-    </div>
-  </div>
-</div>
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <%= f.label :subcategory_id, "Subcategoria", class: "block text-sm font-medium text-gray-700" %>
+                            <button type="button"
+                              class="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
+                              data-action="click->category-filter#toggleNewSubcategory">
+                                    + Nova subcategoria
+                            </button>
+                        </div>
 
+                        <%= f.select :subcategory_id, Subcategory.all.map { |s| [s.name, s.id, { "data-category-id": s.category_id }] }, { prompt: "Selecione a Subcategoria" }, { class: "mt-1 block w-full select rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2", data: { category_filter_target: "subcategory" } } %>
 
-  <div>
-    <%= label_tag :tag_names, "Tags (separadas por vírgula)", class: "block text-sm font-medium text-gray-700" %>
-    <%= text_field_tag :tag_names, note.tags.map(&:name).join(", "), autocomplete: "off",class: "mt-1 block w-full rounded-md border-gray-300 input shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" %>
-  </div>
+                            <div data-category-filter-target="newSubcategoryWrapper" class="hidden mt-2">
+                                <%= label_tag :new_subcategory_name, "Ou criar nova subcategoria", class: "block text-sm font-medium text-gray-700 mb-1" %>
+                                <%= text_field_tag :new_subcategory_name, nil, placeholder: "Digite o nome da nova subcategoria", class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2", data: { category_filter_target: "newSubcategoryInput" } %>
+                                </div>
+                            </div>
+                        </div>
 
-<div class="flex justify-between space-x-3 pt-4 border-t border-gray-200">
+                        <div>
+                            <%= label_tag :tag_names, "Tags (separadas por vírgula)", class: "block text-sm font-medium text-gray-700" %>
+                            <%= text_field_tag :tag_names, note.tags.map(& :name).join(", "), autocomplete: "off", class: "mt-1 block w-full rounded-md border-gray-300 input shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" %>
+                        </div>
 
-    <div class="flex justify-end space-x-2 order-2">
-        <%= link_to "Cancelar", notes_path, class: "btn btn-ghost", data: { turbo_frame: "_top" } %>
-        <%= f.submit "Salvar Alterações", class: "btn btn-secundary" %>
-    </div>
+                        <div class="flex justify-between space-x-3 pt-4 border-t border-gray-200">
 
-<% end %>
-    <div class="flex justify-start space-x-2 order-1">
-            <% if action_name == "edit" %>
-            <%= button_to "Deletar", note_path(@note), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "btn btn-error justify-start btn-outline" %>
-            <% end %>
-    </div>
-</div>
+                            <div class="flex justify-end space-x-2 order-2">
+                                <%= link_to "Cancelar", notes_path, class: "btn btn-ghost", data: { turbo_frame: "_top", keyboard_shortcuts_target: "cancelLink" } %>
+                                    <%= f.submit "Salvar Alterações", class: "btn btn-success" %>
+                                </div>
+
+                            <% end %>
+                            <div class="flex justify-start space-x-2 order-1">
+                                <% if action_name == "edit" %>
+                                    <%= button_to "Deletar", note_path(@note), method: :delete, data: { turbo_confirm: "Tem certeza?", keyboard_shortcuts_target: "deleteButton" }, keyboard_shortcuts_target: "deleteButton", class: "btn btn-error justify-start btn-outline" %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="text-sm block p-8 shadow text-gray-500 my-8 border border-gray-200 pt-4">
+                            <p class="font-medium mb-2"> Use as seguintes teclas de atalho para: </p>
+                            <kbd class="kbd kbd-sm ">ctrl</kbd>
+                                +
+                            <kbd class="kbd kbd-sm ">s</kbd> para salvar a nota, <br>
+                            <kbd class="kbd kbd-sm ">esc</kbd> para cancelar a edição,<br>
+                            <kbd class="kbd kbd-sm ">del</kbd> para deletar a nota (apenas na tela de edição).
+                        </span>
