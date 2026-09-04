@@ -39,6 +39,7 @@ class Note < ApplicationRecord
   def typesense_document
     {
       "id" => id.to_s,
+      "uid" => uid.to_s,
       "content" => content.to_s,
       "author.name" => author&.name.to_s,
       "category.name" => subcategory&.category&.name.to_s,
@@ -73,6 +74,7 @@ class Note < ApplicationRecord
     schema = {
       "name" => "notes",
       "fields" => [
+        { "name" => "uid", "type" => "string" },
         { "name" => "content", "type" => "string" },
         { "name" => "author.name", "type" => "string", "facet" => true },
         { "name" => "category.name", "type" => "string", "facet" => true },

@@ -39,7 +39,7 @@ export default class extends Controller {
         cacheSearchResultsForSeconds: 2 * 60,
       },
       additionalSearchParameters: {
-        query_by: "content,author.name,category.name,subcategory.name,tags",
+        query_by: "uid,content,author.name,category.name,subcategory.name,tags",
         highlight_full_fields: "content",
         snippet_threshold: 10,
         num_typos: 1,
@@ -201,10 +201,14 @@ export default class extends Controller {
               <div class="group card bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 w-full overflow-hidden">
                 <div class="card-body p-4">
 
+                  <div class="text-sm font-semibold text-gray-500 mb-2">
+                    UID: ${hit.uid}
+                  </div>
+
                   <div class="prose prose-xl max-w-none text-gray-800 leading-tight">
                     ${components.Highlight({ hit, attribute: "content" })}
                   </div>
-
+                
                   <div class="mt-4 pt-2 border-t border-gray-30 flex-wrap flex items-center justify-between group-hover:opacity-80 transition-opacity duration-200">
                     ${tags.length > 0 ? html`
                     <div class="flex flex-wrap gap-1 mb-2">

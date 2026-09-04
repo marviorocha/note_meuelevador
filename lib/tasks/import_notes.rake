@@ -9,6 +9,7 @@ namespace :import do
     CSV.foreach(file_path, headers: true) do |row|
       author = Author.find_or_create_by!(name: row["Author"].to_s.strip)
       cat_name = row["categoria"].to_s.strip
+      uid = row["ID"].to_s
       cat = Category.where("LOWER(name) = ?", cat_name.downcase).first!
 
 
@@ -36,6 +37,7 @@ namespace :import do
 
       note = Note.create!(
         subcategory: sub,
+        uid: uid,
         author: author,
         status: status,
         content: row["note_content"],

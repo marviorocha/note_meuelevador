@@ -1,7 +1,11 @@
 ---
 engine_version: 0.5.0
-file_version: 2026-07-08 22:00:11.670946000 Z
+file_version: 2026-09-04 20:10:39.159517000 Z
 resources:
+- name: action_text/encrypted_rich_text
+  preferences:
+    visible: false
+  updated_at: 2026-09-04 19:34:32.451266000 +00:00
 - name: active_admin/comment
   preferences:
     visible: false
@@ -66,6 +70,19 @@ resources:
       name: created_at
     - access_type: hidden
       name: characters
+    - access_type: read_write
+      column_type: string
+      virtual: true
+      name: uid
+      display_name: uid
+      format: {}
+      validators: []
+      description: ''
+    - display_name: uid
+      column_type: string
+      access_type: hidden
+      virtual: true
+      name: id
     scopes:
     - visible: false
       name: not_arquivado
@@ -75,7 +92,7 @@ resources:
       name: not_revisado_por_pablo
     - visible: false
       name: not_revisar
-  updated_at: 2026-07-08 19:31:27.731821000 +00:00
+  updated_at: 2026-09-04 20:10:39.159517000 +00:00
 - name: note_tag
   preferences:
     icon: tag
@@ -120,6 +137,19 @@ configs:
   - name: Relatório
     link_type: reports
   updated_at: 2026-07-02 04:02:07.739329000 +00:00
+- key: resources.note.columns.order
+  value:
+  - id
+  - uid
+  - author_id
+  - subcategory_id
+  - status
+  - content
+  - characters
+  - is_new
+  - updated_at
+  - created_at
+  updated_at: 2026-09-04 20:10:10.718978000 +00:00
 - key: resources.note.scopes.order
   value:
   - arquivado
