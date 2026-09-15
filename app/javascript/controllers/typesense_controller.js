@@ -202,13 +202,13 @@ export default class extends Controller {
                 <div class="card-body p-4">
 
                   <div class="text-sm font-semibold text-gray-500 mb-2">
-                    UID: ${hit.uid}
+                    ID: ${hit.uid}
                   </div>
 
                   <div class="prose prose-xl max-w-none text-gray-800 leading-tight">
                     ${components.Highlight({ hit, attribute: "content" })}
                   </div>
-                
+
                   <div class="mt-4 pt-2 border-t border-gray-30 flex-wrap flex items-center justify-between group-hover:opacity-80 transition-opacity duration-200">
                     ${tags.length > 0 ? html`
                     <div class="flex flex-wrap gap-1 mb-2">

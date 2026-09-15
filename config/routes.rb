@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "notes#index"
   post "/ai/ask", to: "ai#ask"
+  post "/ai/generate_note", to: "ai#generate_note", as: :ai_generate_note
   resources :notes
 
   namespace :api do

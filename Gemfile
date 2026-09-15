@@ -57,3 +57,5 @@ gem "kaminari"
 gem "rails_live_reload", "~> 0.5.0"
 
 gem "motor-admin", "~> 0.5.0"
+
+gem "ruby-openai", "~> 8.3"
